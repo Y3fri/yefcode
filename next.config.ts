@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Export estático para Netlify: genera la salida en /out
+  output: "export",
+  images: {
+    // Con output: "export" no hay API de optimización en el servidor.
+    // Netlify sirve los estáticos directamente desde su CDN.
+    unoptimized: true,
+  },
   turbopack: {
     rules: {
       "*.css": {
