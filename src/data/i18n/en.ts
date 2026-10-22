@@ -11,7 +11,7 @@ import type { ProjectSlug } from "@/data/projects";
 export const en: Dictionary = {
   meta: {
     description:
-      "Yeferson Guzmán, full stack developer in Colombia. I build web applications and APIs with React, Python and relational databases, from interface to deployment.",
+      "Yeferson Guzmán, full stack developer in Colombia. Websites for people and businesses: online resume, business page, portfolio and custom projects.",
   },
 
   skipLink: "Skip to content",
@@ -22,10 +22,10 @@ export const en: Dictionary = {
     closeMenu: "Close menu",
     labels: {
       home: "Home",
-      about: "About",
-      services: "What I do",
-      stack: "Stack",
+      templates: "Templates",
+      pricing: "Pricing",
       projects: "Projects",
+      faq: "FAQ",
       contact: "Contact",
     },
   },
@@ -49,23 +49,187 @@ export const en: Dictionary = {
 
   hero: {
     badge: "Available for new projects",
-    title: "I build web software that works, scales and lasts.",
+    title: "Your website, without complications.",
     subtitle:
-      "I'm Yeferson Guzmán, a full stack developer in Colombia. I design and build web applications and APIs with React, Python and relational databases, from interface to deployment.",
-    primaryCta: "View projects",
-    secondaryCta: "Let's talk",
+      "Online resumes, pages for businesses and custom digital details. Built by hand, with clean code and at a fair price.",
+    primaryCta: "View templates",
+    secondaryCta: "Message me on WhatsApp",
     terminal: [
-      { prompt: "$", text: "whoami" },
-      { text: "→ yeferson-guzman", tone: "ok" as const },
-      { prompt: "$", text: "role" },
-      { text: "→ full-stack developer", tone: "muted" as const },
-      { prompt: "$", text: "stack" },
-      { text: "→ react · python · fastapi · mysql", tone: "muted" as const },
-      { prompt: "$", text: "location" },
-      { text: "→ facatativa, colombia 🇨🇴", tone: "muted" as const },
+      { prompt: "$", text: "help" },
+      { text: "→ people, businesses, ideas", tone: "muted" as const },
+      { prompt: "$", text: "deliver" },
+      { text: "→ a live site, ready to share", tone: "muted" as const },
       { prompt: "$", text: "status" },
-      { text: "→ open to work", tone: "ok" as const },
+      { text: "→ taking new projects", tone: "ok" as const },
     ],
+  },
+
+  services: {
+    command: "git log --services",
+    title: "What I can build for you",
+    description: "Your website, without complications or agency budgets.",
+    items: [
+      {
+        id: "cv",
+        title: "Web resume",
+        text: "Your professional profile in a link you can add to your CV or LinkedIn.",
+      },
+      {
+        id: "business",
+        title: "Website for your business",
+        text: "Catalog, hours, location and a WhatsApp button so people can find you and message you.",
+      },
+      {
+        id: "portfolio",
+        title: "Personal portfolio",
+        text: "To showcase your work if you're a designer, photographer, student or freelancer.",
+      },
+      {
+        id: "events",
+        title: "Pages for special moments",
+        text: "Digital letters, anniversaries, birthdays, invitations and surprises, with your message and your style.",
+      },
+      {
+        id: "custom",
+        title: "Custom project",
+        text: "If your idea doesn't fit the options above, let's talk it through.",
+      },
+    ],
+  },
+
+  templates: {
+    command: "git log --templates",
+    title: "Templates",
+    description:
+      "Ready-to-customize bases: pick one and I adapt it to your case, with a live demo to see it before deciding.",
+    viewAll: "View all templates",
+    viewDemo: "View demo",
+    cta: "I want this template",
+    demoBadge: "Demo",
+    demoNote:
+      "Demo with sample data: names, texts and photos are fictional. In the real template they're replaced with yours.",
+    filterLabel: "Filter templates by category",
+    all: "All",
+    categories: {
+      cv: "Resume",
+      negocio: "Business",
+      portafolio: "Portfolio",
+      momentos: "Special moments",
+    },
+    bestForLabel: "Best for",
+    includesLabel: "Includes",
+    countLabel: (n: number) => (n === 1 ? "1 template" : `${n} templates`),
+    emptyState: "No templates in this category yet.",
+    previewAlt: (title: string) => `Preview of the ${title} template`,
+    backLink: "Back to templates",
+  },
+
+  process: {
+    command: "git log --process",
+    title: "How we work",
+    description: "Four steps, from first conversation to your site online.",
+    steps: [
+      {
+        id: "brief",
+        title: "We talk",
+        text: "You tell me what you need on WhatsApp.",
+      },
+      {
+        id: "proposal",
+        title: "Proposal",
+        text: "I show you a proposal or a base template.",
+      },
+      {
+        id: "adjust",
+        title: "We personalize",
+        text: "We adjust texts, colors and photos together.",
+      },
+      {
+        id: "launch",
+        title: "We go live",
+        text: "We publish your site and I explain how to maintain it.",
+      },
+    ],
+  },
+
+  includes: {
+    command: "git log --includes",
+    title: "What's included",
+    description: "What's always part of every site.",
+    items: [
+      { id: "responsive", text: "A design that looks good on mobile." },
+      { id: "link", text: "Your own link to share." },
+      { id: "contact", text: "A contact or WhatsApp button." },
+      { id: "seo", text: "Optimized to load fast and show up on Google." },
+    ],
+    pendingTitle: "Your own domain and hosting",
+    pendingNote:
+      "We settle it together before starting: I lay out the options and who covers each cost.",
+    // TODO(yeferson): decide whether domain and hosting are included in the
+    // price, paid by the client or optional (same decision as the FAQ
+    // "Who pays for the domain?").
+  },
+
+  pricing: {
+    command: "git log --pricing",
+    title: "Pricing",
+    description:
+      "Three ways to start, depending on what you need. The final price is defined with you based on the project's scope.",
+    quoteLabel: "Quote via WhatsApp",
+    cta: "Get a quote on WhatsApp",
+  },
+
+  faq: {
+    command: "git log --faq",
+    title: "Frequently asked questions",
+    description: "The essentials before you message me: timelines, changes, payments and domains.",
+    items: [
+      {
+        id: "time",
+        question: "How long does it take?",
+        answer:
+          "It depends on the type of page and how quickly you send me the content. You get a timeframe with the proposal, before committing to anything.",
+        // TODO(yeferson): define real timelines per type of page
+        // (resume, business, portfolio, special moments, custom).
+      },
+      {
+        id: "tech",
+        question: "Do I need to know about technology?",
+        answer:
+          "No. I take care of building and publishing your site; you only review and approve the content. If something technical comes up, I explain it in plain words.",
+      },
+      {
+        id: "changes",
+        question: "Can I change things afterwards?",
+        answer:
+          "Yes. Texts, colors and photos can be updated after launch. Before each change I confirm whether it's within the agreed scope or has an extra cost.",
+        // TODO(yeferson): define the post-delivery changes policy
+        // (how many changes are included and when an extra cost applies).
+      },
+      {
+        id: "payment",
+        question: "How do I pay?",
+        answer:
+          "We settle it when the project is confirmed: I confirm the payment methods and the price on WhatsApp before starting, no surprises.",
+        // TODO(yeferson): define accepted payment methods
+        // (bank transfer, Nequi, Daviplata or other) and whether a deposit applies.
+      },
+      {
+        id: "domain",
+        question: "Who pays for the domain?",
+        answer:
+          "It's a detail we agree on before starting. I lay out the options and who covers each cost before you pay anything.",
+        // TODO(yeferson): define the domain and hosting policy
+        // (included in the price, paid by the client or optional).
+      },
+    ],
+  },
+
+  cta: {
+    command: "$ ./start-project.sh",
+    title: "Have an idea? Tell me about it.",
+    text: "Message me on WhatsApp and I'll tell you how it can be done, with clear scope and price.",
+    button: "Message me on WhatsApp",
   },
 
   about: {
@@ -88,34 +252,6 @@ export const en: Dictionary = {
     },
   },
 
-  services: {
-    command: "git log --services",
-    title: "What I do",
-    description: "Four concrete ways I can work with you.",
-    items: [
-      {
-        id: "web",
-        title: "Full stack web development",
-        text: "Complete applications, from frontend to database.",
-      },
-      {
-        id: "api",
-        title: "APIs and backend",
-        text: "REST services with Python/FastAPI, authentication and well-modeled data.",
-      },
-      {
-        id: "ui",
-        title: "Interfaces and UX",
-        text: "Clean, responsive designs built around the real user.",
-      },
-      {
-        id: "custom",
-        title: "Custom systems",
-        text: "Internal tools, point-of-sale systems and operational solutions for businesses.",
-      },
-    ],
-  },
-
   stack: {
     command: "git log --stack",
     title: "Stack",
@@ -130,9 +266,9 @@ export const en: Dictionary = {
 
   projects: {
     command: "git log --projects",
-    title: "Projects",
+    title: "Projects I've built",
     description:
-      "A selection of recent work: online stores, PWAs, desktop tools and full stack platforms in development.",
+      "Evidence of what I can do: online stores, PWAs, desktop tools and full stack platforms.",
     status: { live: "In production", development: "In development" },
     roleLabel: "My role",
     technologiesLabel: (title: string) => `Technologies used in ${title}`,

@@ -70,13 +70,17 @@ export const experience: readonly ExperienceItem[] = [
   },
 ];
 
+/**
+ * Navegación de la navbar. Los href empiezan con "/#" para funcionar
+ * también desde las páginas de plantillas (vuelven a la home + ancla).
+ */
 export const navigation = [
-  { href: "#inicio", labelKey: "home" },
-  { href: "#sobre-mi", labelKey: "about" },
-  { href: "#que-hago", labelKey: "services" },
-  { href: "#stack", labelKey: "stack" },
-  { href: "#proyectos", labelKey: "projects" },
-  { href: "#contacto", labelKey: "contact" },
+  { href: "/#inicio", labelKey: "home" },
+  { href: "/#plantillas", labelKey: "templates" },
+  { href: "/#precios", labelKey: "pricing" },
+  { href: "/#proyectos", labelKey: "projects" },
+  { href: "/#faq", labelKey: "faq" },
+  { href: "/#contacto", labelKey: "contact" },
 ] as const;
 
 export type NavigationLabelKey = (typeof navigation)[number]["labelKey"];

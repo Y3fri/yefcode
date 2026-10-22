@@ -43,7 +43,7 @@ export function Navbar() {
         className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:px-8"
       >
         <Link
-          href="#inicio"
+          href="/#inicio"
           className="flex items-center gap-2 font-mono text-sm font-medium text-foreground transition-colors hover:text-accent-blue"
         >
           <span aria-hidden="true" className="text-gradient font-semibold">

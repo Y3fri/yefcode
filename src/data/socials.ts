@@ -19,6 +19,30 @@ const whatsappMessage = encodeURIComponent(
 
 export const whatsappUrl = `${profileFacts.whatsappUrl}?text=${whatsappMessage}`;
 
+/** Construye una URL de WhatsApp con un mensaje prellenado (en español). */
+export function whatsappUrlWithMessage(message: string): string {
+  return `${profileFacts.whatsappUrl}?text=${encodeURIComponent(message)}`;
+}
+
+/** Mensaje para el hero y el CTA final: interesado en una página web. */
+export const whatsappStartUrl = whatsappUrlWithMessage(
+  "Hola Yeferson, vi tu portafolio y me interesa una página web. Te cuento lo que necesito: ",
+);
+
+/** Mensaje para el botón "Quiero esta plantilla" (incluye el nombre). */
+export function whatsappUrlForTemplate(title: string): string {
+  return whatsappUrlWithMessage(
+    `Hola Yeferson, vi tu portafolio y me interesa la plantilla «${title}». Te cuento lo que necesito: `,
+  );
+}
+
+/** Mensaje para el botón de cotizar de cada paquete de precios. */
+export function whatsappUrlForPackage(name: string): string {
+  return whatsappUrlWithMessage(
+    `Hola Yeferson, vi tu portafolio y me interesa el paquete «${name}». Te cuento lo que necesito: `,
+  );
+}
+
 export const socials: readonly Social[] = [
   {
     id: "email",

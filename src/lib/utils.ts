@@ -3,12 +3,22 @@
  * Sin dependencias externas: mantenerlo así salvo justificación.
  */
 
+import type { LocalizedText } from "@/lib/types";
+
 /**
  * Une clases de Tailwind condicionalmente.
  * Acepta strings, y valores falsy que se descartan.
  */
 export function cn(...classes: readonly (string | false | null | undefined)[]): string {
   return classes.filter(Boolean).join(" ");
+}
+
+/**
+ * Crea un texto bilingüe { es, en } para datos estructurados
+ * (plantillas, precios). El español es la fuente; el inglés, obligatorio.
+ */
+export function L(es: string, en: string): LocalizedText {
+  return { es, en };
 }
 
 /**

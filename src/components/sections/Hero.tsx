@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { Terminal } from "@/components/ui/Terminal";
 import { GitLabel } from "@/components/ui/GitLabel";
 import { useSettings } from "@/components/providers/SettingsProvider";
 import { profile } from "@/data/profile";
+import { whatsappStartUrl } from "@/data/socials";
 
 /**
  * Hero: etiqueta de disponibilidad, titular, subtítulo, botones
@@ -39,17 +41,21 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href="#proyectos"
+            <Link
+              href="/plantillas"
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2.5 font-mono text-sm font-medium text-white transition-opacity hover:opacity-90"
             >
               <span aria-hidden="true">$</span> {t.hero.primaryCta}
-            </a>
+            </Link>
             <a
-              href="#contacto"
+              href={whatsappStartUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2/60 px-5 py-2.5 font-mono text-sm text-foreground transition-colors hover:border-accent-indigo/50"
             >
               <span aria-hidden="true">$</span> {t.hero.secondaryCta}
+              <span aria-hidden="true">↗</span>
+              <span className="sr-only">{t.newTab}</span>
             </a>
           </div>
         </div>
