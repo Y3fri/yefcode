@@ -63,6 +63,9 @@ efectos o el contexto de ajustes:
   de idioma vía `useSettings()` (cambio es/en en el cliente).
 - `Terminal` (la animación de tipeo con `useEffect`).
 - `SettingsProvider` y `SettingsPanel` (estado de preferencias + localStorage).
+- **Componentes de plantillas** (`TemplatesGallery`, `TemplateCard`,
+  `TemplateDetail` y las demos): idioma vía `useLocalizedText()` y estado
+  propio (filtros de la galería, cuenta regresiva de la invitación).
 
 **Por qué:** el cambio de idioma debe ocurrir en el cliente sin recargar un
 sitio estático. Los componentes de presentación sin texto (`Chip`, `GitLabel`,
@@ -114,6 +117,29 @@ una clave nueva sin traducir **no compila**; `projectCopyEn` está tipado como
 **Por qué:** el orden más reciente primero es el esperado por quien visita un
 portafolio. Al hacerlo en el Server Component no cuesta JS en el cliente.
 
+## 7.1. Plantillas y demos en vivo
+
+**Decisión:** el catálogo (`src/data/templates.ts`) y las demos
+(`src/templates/<slug>/`) viven separados; un registro tipado
+(`src/templates/index.ts`) une cada slug con su componente.
+
+**Por qué:**
+
+- Las rutas `/plantillas` y `/plantillas/[slug]` se prerenderizan con
+  `generateStaticParams`, así que el sitio sigue siendo 100 % estático.
+- El registro es `Record<TemplateSlug, ComponentType>`: agregar una plantilla
+  al catálogo sin crear su demo **no compila**. Es la misma filosofía que
+  `projectCopyEn` y `Record<ProjectSlug, …>`.
+- El texto de catálogo y demos usa `LocalizedText { es, en }` con la fábrica
+  `L()` (`src/lib/utils.ts`): español e inglés se escriben juntos, sin
+  duplicar la estructura de los datos.
+- Las demos son mini-sitios con paleta propia (justificado: representan
+  páginas ajenas al portafolio). Sus únicas reglas globales son las de
+  `reduced-motion` y el marco "Demo" que aportan `TemplateCard` y
+  `TemplateDetail`, para que ninguna demo pueda publicarse sin etiqueta.
+- Las imágenes de vista previa son SVG mockup en `public/templates/`:
+  ligeras, sin fotos reales y con la etiqueta "DEMO" dibujada.
+
 ## 8. Seguridad
 
 **Decisión:** cabeceras de seguridad centralizadas en `netlify.toml`.
@@ -148,10 +174,10 @@ esté completa. El inventario completo está en `docs/CONTENT.md`.
 
 ## 11. Decisiones que quedaron pendientes deliberadamente
 
-| Tema                 | Estado                                                         |
-| -------------------- | -------------------------------------------------------------- |
-| Modo claro (light)   | Incluido como preferencia opcional; el sitio sigue naciendo oscuro. |
-| Páginas por proyecto | No incluidas: el brief pide tarjetas con enlace, no rutas.     |
-| Formulario contact   | No incluido: el brief pide enlaces mailto/redes, sin backend.  |
-| Analítica            | No incluida: sin dependencias externas ni cookies.             |
+| Tema                 | Estado                                                                 |
+| -------------------- | ---------------------------------------------------------------------- |
+| Modo claro (light)   | Incluido como preferencia opcional; el sitio sigue naciendo oscuro.    |
+| Páginas por proyecto | No incluidas: el brief pide tarjetas con enlace, no rutas.             |
+| Formulario contact   | No incluido: el brief pide enlaces mailto/redes, sin backend.          |
+| Analítica            | No incluida: sin dependencias externas ni cookies.                     |
 | Server-side i18n     | No incluido: el sitio es estático y el cambio de idioma es en cliente. |

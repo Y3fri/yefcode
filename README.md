@@ -1,7 +1,10 @@
-# YefCode — Portafolio de Yeferson Guzmán
+# YefCode — Yeferson Guzmán
 
-Portafolio personal **estático** de Yeferson Guzmán, desarrollador full stack.
-Muestra su perfil, sus proyectos y cómo contactarlo. No vende nada y no tiene backend.
+Sitio **estático** de Yeferson Guzmán, desarrollador full stack en Colombia:
+portafolio + servicio de páginas web para personas y negocios ("Tu página web,
+sin complicaciones ni presupuestos de agencia"). Incluye plantillas con demo en
+vivo (`/plantillas`) y contacto directo por WhatsApp. No hay backend, pagos en
+línea ni formularios.
 
 **Stack:** Next.js 16 (App Router) · TypeScript estricto · Tailwind CSS v4 · pnpm
 **Salida:** sitio 100 % estático (`output: "export"`) listo para Netlify
@@ -43,15 +46,20 @@ Abre <http://localhost:3000>.
 
 ```
 src/
-├── app/          # Layout, página, 404, sitemap, robots, icono
+├── app/          # Layout, home, 404, sitemap, robots, icono
+│   └── plantillas/  # Galería filtrable + demo por plantilla ([slug])
 ├── components/
 │   ├── layout/   # Navbar, Footer, SkipLink
 │   ├── providers/# SettingsProvider (tema, idioma, acento, animaciones)
-│   ├── sections/ # Hero, About, Services, Stack, Projects, Experience, Contact
+│   ├── sections/ # Hero, Services, Process, Pricing, Projects, Faq…
+│   ├── templates/# TemplateCard, TemplatesGallery, TemplateDetail
 │   └── ui/       # Chip, GitLabel, SectionHeading, Terminal, SettingsPanel
-├── data/         # profile.ts, socials.ts, projects.ts, stack.ts, i18n/
+├── data/         # profile.ts, socials.ts, projects.ts, templates.ts,
+│                 # pricing.ts, stack.ts, i18n/
+├── templates/    # Demos en vivo: cv-profesional/, negocio-local/, …
 └── lib/          # types.ts, settings.ts, utils.ts
 public/projects/  # Imágenes y video de proyectos
+public/templates/ # Vistas previas (SVG) de plantillas
 docs/             # ARCHITECTURE.md, DESIGN.md, CONTENT.md
 ```
 
@@ -102,6 +110,17 @@ el sitemap y Open Graph. Si no existe, se usa un valor por defecto.
 4. `pnpm typecheck`. La tarjeta aparece sola.
 
 Detalles en [CLAUDE.md](./CLAUDE.md#Cómo-agregar-un-proyecto-nuevo).
+
+## Cómo agregar una plantilla nueva
+
+1. Vistas previa en `public/templates/<slug>.svg`.
+2. Catálogo + contenido ficticio en `src/data/templates.ts` (texto con
+   `L("es", "en")`).
+3. Demo en `src/templates/<slug>/index.tsx`.
+4. Registro en `src/templates/index.ts` (`templateDemos`).
+5. `pnpm typecheck`. Ruta y sitemap se generan solos.
+
+Detalles en [CLAUDE.md](./CLAUDE.md#Cómo-agregar-una-plantilla-nueva).
 
 ## Documentación
 
