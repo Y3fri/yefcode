@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <title>Vista previa de la plantilla Carta digital (demo)</title>
+  <defs>
+    <linearGradient id="lt-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1f2"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <clipPath id="lt-window"><rect x="40" y="36" width="720" height="428" rx="14"/></clipPath>
+    <path id="lt-heart" d="M0 0c-3-4.6-9-3.2-9 .8 0 3.4 4.4 6.4 9 9.2 4.6-2.8 9-5.8 9-9.2 0-4-6-5.4-9-.8Z"/>
+  </defs>
+
+  <rect width="800" height="500" fill="#eaeef6"/>
+
+  <g clip-path="url(#lt-window)">
+    <rect x="40" y="36" width="720" height="428" fill="url(#lt-bg)"/>
+    <rect x="40" y="36" width="720" height="34" fill="#f1f4fa"/>
+    <line x1="40" y1="70" x2="760" y2="70" stroke="#dde3ef"/>
+
+    <circle cx="66" cy="53" r="5" fill="#ff5f57"/>
+    <circle cx="84" cy="53" r="5" fill="#febc2e"/>
+    <circle cx="102" cy="53" r="5" fill="#28c840"/>
+
+    <rect x="672" y="44" width="66" height="20" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="705" y="58" font-size="11" font-family="ui-monospace, monospace" fill="#b45309" text-anchor="middle">DEMO</text>
+
+    <use href="#lt-heart" transform="translate(150 140) scale(1.4)" fill="#fda4af" opacity="0.7"/>
+    <use href="#lt-heart" transform="translate(640 120) scale(1)" fill="#fb7185" opacity="0.6"/>
+    <use href="#lt-heart" transform="translate(210 380) scale(1.1)" fill="#fda4af" opacity="0.6"/>
+    <use href="#lt-heart" transform="translate(620 400) scale(1.5)" fill="#fecdd3"/>
+    <use href="#lt-heart" transform="translate(400 108) scale(0.9)" fill="#fecdd3"/>
+
+    <rect x="366" y="120" width="68" height="8" rx="4" fill="#fb7185"/>
+    <rect x="300" y="150" width="200" height="20" rx="8" fill="#9f1239"/>
+
+    <rect x="210" y="212" width="380" height="10" rx="5" fill="#e5e9f2"/>
+    <rect x="196" y="236" width="408" height="10" rx="5" fill="#e5e9f2"/>
+    <rect x="226" y="260" width="348" height="10" rx="5" fill="#e5e9f2"/>
+
+    <rect x="180" y="300" width="440" height="10" rx="5" fill="#e5e9f2"/>
+    <rect x="204" y="324" width="392" height="10" rx="5" fill="#e5e9f2"/>
+    <rect x="240" y="348" width="320" height="10" rx="5" fill="#e5e9f2"/>
+
+    <rect x="486" y="396" width="120" height="10" rx="5" fill="#be123c"/>
+    <rect x="510" y="418" width="96" height="10" rx="5" fill="#e5e9f2"/>
+  </g>
+
+  <rect x="40" y="36" width="720" height="428" rx="14" fill="none" stroke="#d3dae8"/>
+</svg>

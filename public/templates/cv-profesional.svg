@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <title>Vista previa de la plantilla Hoja de vida web (demo)</title>
+  <defs>
+    <linearGradient id="cv-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <clipPath id="cv-window"><rect x="40" y="36" width="720" height="428" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="800" height="500" fill="#eaeef6"/>
+
+  <g clip-path="url(#cv-window)">
+    <rect x="40" y="36" width="720" height="428" fill="#ffffff"/>
+    <rect x="40" y="36" width="720" height="34" fill="#f1f4fa"/>
+    <line x1="40" y1="70" x2="760" y2="70" stroke="#dde3ef"/>
+
+    <circle cx="66" cy="53" r="5" fill="#ff5f57"/>
+    <circle cx="84" cy="53" r="5" fill="#febc2e"/>
+    <circle cx="102" cy="53" r="5" fill="#28c840"/>
+
+    <rect x="672" y="44" width="66" height="20" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="705" y="58" font-size="11" font-family="ui-monospace, monospace" fill="#b45309" text-anchor="middle">DEMO</text>
+
+    <circle cx="128" cy="126" r="34" fill="url(#cv-accent)"/>
+    <rect x="180" y="100" width="250" height="20" rx="6" fill="#10152a"/>
+    <rect x="180" y="130" width="170" height="12" rx="6" fill="url(#cv-accent)"/>
+    <rect x="180" y="152" width="120" height="10" rx="5" fill="#c8d0e0"/>
+
+    <rect x="92" y="196" width="104" height="28" rx="14" fill="url(#cv-accent)"/>
+    <rect x="208" y="196" width="104" height="28" rx="14" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="324" y="196" width="104" height="28" rx="14" fill="#eef1f7" stroke="#d8deea"/>
+
+    <rect x="92" y="256" width="96" height="12" rx="6" fill="#10152a"/>
+    <line x1="92" y1="290" x2="708" y2="290" stroke="#e5e9f2"/>
+    <rect x="92" y="308" width="380" height="10" rx="5" fill="#c8d0e0"/>
+    <rect x="92" y="328" width="300" height="10" rx="5" fill="#c8d0e0"/>
+
+    <rect x="92" y="372" width="74" height="24" rx="12" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="176" y="372" width="92" height="24" rx="12" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="278" y="372" width="86" height="24" rx="12" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="374" y="372" width="100" height="24" rx="12" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="484" y="372" width="94" height="24" rx="12" fill="#eef1f7" stroke="#d8deea"/>
+
+    <rect x="92" y="422" width="150" height="28" rx="8" fill="url(#cv-accent)"/>
+    <rect x="254" y="422" width="120" height="28" rx="8" fill="#eef1f7" stroke="#d8deea"/>
+  </g>
+
+  <rect x="40" y="36" width="720" height="428" rx="14" fill="none" stroke="#d3dae8"/>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <title>Vista previa de la plantilla Página para tu negocio (demo)</title>
+  <defs>
+    <linearGradient id="biz-hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#059669"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+    <clipPath id="biz-window"><rect x="40" y="36" width="720" height="428" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="800" height="500" fill="#eaeef6"/>
+
+  <g clip-path="url(#biz-window)">
+    <rect x="40" y="36" width="720" height="428" fill="#ffffff"/>
+    <rect x="40" y="36" width="720" height="34" fill="#f1f4fa"/>
+    <line x1="40" y1="70" x2="760" y2="70" stroke="#dde3ef"/>
+
+    <circle cx="66" cy="53" r="5" fill="#ff5f57"/>
+    <circle cx="84" cy="53" r="5" fill="#febc2e"/>
+    <circle cx="102" cy="53" r="5" fill="#28c840"/>
+
+    <rect x="672" y="44" width="66" height="20" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="705" y="58" font-size="11" font-family="ui-monospace, monospace" fill="#b45309" text-anchor="middle">DEMO</text>
+
+    <rect x="72" y="90" width="130" height="14" rx="7" fill="#10152a"/>
+    <rect x="560" y="90" width="60" height="10" rx="5" fill="#c8d0e0"/>
+    <rect x="634" y="90" width="60" height="10" rx="5" fill="#c8d0e0"/>
+
+    <rect x="72" y="122" width="656" height="150" rx="12" fill="url(#biz-hero)"/>
+    <rect x="104" y="160" width="300" height="18" rx="6" fill="#ffffff"/>
+    <rect x="104" y="190" width="230" height="12" rx="6" fill="#d1fae5"/>
+    <rect x="104" y="222" width="150" height="30" rx="15" fill="#ffffff"/>
+    <rect x="268" y="222" width="130" height="30" rx="15" fill="none" stroke="#ffffff"/>
+
+    <rect x="72" y="298" width="150" height="12" rx="6" fill="#10152a"/>
+
+    <g>
+      <rect x="72" y="326" width="150" height="96" rx="10" fill="#f1f4fa" stroke="#dde3ef"/>
+      <rect x="86" y="340" width="122" height="44" rx="8" fill="#d8deea"/>
+      <rect x="86" y="394" width="90" height="10" rx="5" fill="#c8d0e0"/>
+    </g>
+    <g>
+      <rect x="242" y="326" width="150" height="96" rx="10" fill="#f1f4fa" stroke="#dde3ef"/>
+      <rect x="256" y="340" width="122" height="44" rx="8" fill="#d8deea"/>
+      <rect x="256" y="394" width="100" height="10" rx="5" fill="#c8d0e0"/>
+    </g>
+    <g>
+      <rect x="412" y="326" width="150" height="96" rx="10" fill="#f1f4fa" stroke="#dde3ef"/>
+      <rect x="426" y="340" width="122" height="44" rx="8" fill="#d8deea"/>
+      <rect x="426" y="394" width="84" height="10" rx="5" fill="#c8d0e0"/>
+    </g>
+    <g>
+      <rect x="582" y="326" width="146" height="96" rx="10" fill="#f1f4fa" stroke="#dde3ef"/>
+      <rect x="596" y="340" width="118" height="44" rx="8" fill="#d8deea"/>
+      <rect x="596" y="394" width="96" height="10" rx="5" fill="#c8d0e0"/>
+    </g>
+
+    <rect x="72" y="440" width="200" height="10" rx="5" fill="#c8d0e0"/>
+    <rect x="586" y="438" width="142" height="14" rx="7" fill="#d1fae5"/>
+  </g>
+
+  <rect x="40" y="36" width="720" height="428" rx="14" fill="none" stroke="#d3dae8"/>
+</svg>

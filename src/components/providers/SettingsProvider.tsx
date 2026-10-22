@@ -17,7 +17,7 @@ import {
   getInitialSettings,
   writeStoredSettings,
 } from "@/lib/settings";
-import type { Settings } from "@/lib/types";
+import type { Language, LocalizedText, Settings } from "@/lib/types";
 
 type SettingsContextValue = {
   settings: Settings;
@@ -91,4 +91,15 @@ export function useSettings(): SettingsContextValue {
     throw new Error("useSettings must be used inside <SettingsProvider>");
   }
   return context;
+}
+
+/**
+ * Traduce textos estructurados ({ es, en }) según el idioma activo.
+ * Úsalo con datos de src/data que usan el patrón LocalizedText
+ * (plantillas, precios); el resto vive en el diccionario (useSettings().t).
+ */
+export function useLocalizedText(): (text: LocalizedText) => string {
+  const { settings } = useSettings();
+  const language: Language = settings.language;
+  return useCallback((text: LocalizedText) => text[language], [language]);
 }

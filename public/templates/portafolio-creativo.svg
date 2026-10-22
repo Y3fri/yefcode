@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <title>Vista previa de la plantilla Portafolio creativo (demo)</title>
+  <defs>
+    <linearGradient id="pf-1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="pf-2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="pf-3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <clipPath id="pf-window"><rect x="40" y="36" width="720" height="428" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="800" height="500" fill="#eaeef6"/>
+
+  <g clip-path="url(#pf-window)">
+    <rect x="40" y="36" width="720" height="428" fill="#ffffff"/>
+    <rect x="40" y="36" width="720" height="34" fill="#f1f4fa"/>
+    <line x1="40" y1="70" x2="760" y2="70" stroke="#dde3ef"/>
+
+    <circle cx="66" cy="53" r="5" fill="#ff5f57"/>
+    <circle cx="84" cy="53" r="5" fill="#febc2e"/>
+    <circle cx="102" cy="53" r="5" fill="#28c840"/>
+
+    <rect x="672" y="44" width="66" height="20" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="705" y="58" font-size="11" font-family="ui-monospace, monospace" fill="#b45309" text-anchor="middle">DEMO</text>
+
+    <rect x="72" y="96" width="180" height="18" rx="6" fill="#10152a"/>
+    <rect x="72" y="124" width="260" height="10" rx="5" fill="#c8d0e0"/>
+    <rect x="72" y="142" width="200" height="10" rx="5" fill="#c8d0e0"/>
+
+    <rect x="72" y="176" width="86" height="26" rx="13" fill="#10152a"/>
+    <rect x="168" y="176" width="110" height="26" rx="13" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="288" y="176" width="124" height="26" rx="13" fill="#eef1f7" stroke="#d8deea"/>
+    <rect x="422" y="176" width="72" height="26" rx="13" fill="#eef1f7" stroke="#d8deea"/>
+
+    <g>
+      <rect x="72" y="226" width="200" height="108" rx="10" fill="url(#pf-1)"/>
+      <rect x="86" y="306" width="92" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+    <g>
+      <rect x="300" y="226" width="200" height="108" rx="10" fill="url(#pf-2)"/>
+      <rect x="314" y="306" width="80" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+    <g>
+      <rect x="528" y="226" width="200" height="108" rx="10" fill="url(#pf-3)"/>
+      <rect x="542" y="306" width="86" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+    <g>
+      <rect x="72" y="352" width="200" height="108" rx="10" fill="url(#pf-3)"/>
+      <rect x="86" y="432" width="86" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+    <g>
+      <rect x="300" y="352" width="200" height="108" rx="10" fill="url(#pf-1)"/>
+      <rect x="314" y="432" width="92" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+    <g>
+      <rect x="528" y="352" width="200" height="108" rx="10" fill="url(#pf-2)"/>
+      <rect x="542" y="432" width="80" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+    </g>
+  </g>
+
+  <rect x="40" y="36" width="720" height="428" rx="14" fill="none" stroke="#d3dae8"/>
+</svg>
