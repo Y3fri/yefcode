@@ -55,6 +55,120 @@
 @layer base {
   :root {
     color-scheme: dark;
+
+    /* Trazos/glow derivados del acento activo (se redefinen por paleta) */
+    --glow-a: 79 140 255;
+    --glow-b: 168 85 247;
+    --glow-c: 109 94 252;
+
+    /* Muestras de color del panel de configuración (tema oscuro) */
+    --swatch-blue: #4f8cff;
+    --swatch-violet: #a855f7;
+    --swatch-green: #34d399;
+    --swatch-amber: #fbbf24;
+  }
+
+  /*
+   * Paletas de acento (4 opciones del panel de configuración).
+   * La paleta por defecto es "azul": reproduce exactamente el diseño original.
+   */
+  [data-accent="blue"] {
+    --color-accent-blue: #4f8cff;
+    --color-accent-indigo: #6d5efc;
+    --color-accent-violet: #a855f7;
+    --glow-a: 79 140 255;
+    --glow-b: 168 85 247;
+    --glow-c: 109 94 252;
+  }
+
+  [data-accent="violet"] {
+    --color-accent-blue: #8b5cf6;
+    --color-accent-indigo: #7c3aed;
+    --color-accent-violet: #c084fc;
+    --glow-a: 139 92 246;
+    --glow-b: 192 132 252;
+    --glow-c: 124 58 237;
+  }
+
+  [data-accent="green"] {
+    --color-accent-blue: #34d399;
+    --color-accent-indigo: #10b981;
+    --color-accent-violet: #6ee7b7;
+    --glow-a: 52 211 153;
+    --glow-b: 110 231 183;
+    --glow-c: 16 185 129;
+  }
+
+  [data-accent="amber"] {
+    --color-accent-blue: #fbbf24;
+    --color-accent-indigo: #f59e0b;
+    --color-accent-violet: #fcd34d;
+    --glow-a: 251 191 36;
+    --glow-b: 252 211 77;
+    --glow-c: 245 158 11;
+  }
+
+  /*
+   * Tema claro: mismos tipos de token, contraste AA sobre fondo claro.
+   * El tema oscuro sigue siendo el predeterminado del sitio.
+   */
+  [data-theme="light"] {
+    color-scheme: light;
+
+    --color-background: #f5f7fb;
+    --color-background-soft: #eceff6;
+
+    --color-surface: #ffffff;
+    --color-surface-2: #eef1f7;
+    --color-border: #dbe0ea;
+    --color-border-strong: #b8c1d1;
+
+    --color-foreground: #10152a;
+    --color-muted: #46506a;
+    --color-faint: #5f6a85;
+
+    --color-accent-blue: #1668e3;
+    --color-accent-indigo: #5b46e5;
+    --color-accent-violet: #9333ea;
+
+    --color-ok: #0b7a57;
+    --color-warn: #b45309;
+
+    --glow-a: 22 104 227;
+    --glow-b: 147 51 234;
+    --glow-c: 91 70 229;
+
+    --swatch-blue: #1668e3;
+    --swatch-violet: #7c3aed;
+    --swatch-green: #0b7a57;
+    --swatch-amber: #b45309;
+  }
+
+  [data-theme="light"][data-accent="violet"] {
+    --color-accent-blue: #7c3aed;
+    --color-accent-indigo: #6d28d9;
+    --color-accent-violet: #9333ea;
+    --glow-a: 124 58 237;
+    --glow-b: 147 51 234;
+    --glow-c: 109 40 217;
+  }
+
+  [data-theme="light"][data-accent="green"] {
+    --color-accent-blue: #0b7a57;
+    --color-accent-indigo: #0c6b51;
+    --color-accent-violet: #0e7d5e;
+    --glow-a: 11 122 87;
+    --glow-b: 14 125 94;
+    --glow-c: 12 107 81;
+  }
+
+  [data-theme="light"][data-accent="amber"] {
+    --color-accent-blue: #b45309;
+    --color-accent-indigo: #9a5209;
+    --color-accent-violet: #92400e;
+    --glow-a: 180 83 9;
+    --glow-b: 146 64 14;
+    --glow-c: 154 82 9;
   }
 
   html {
@@ -84,13 +198,17 @@
   }
 
   /*
-   * Fondo con glow radial sutil: azul arriba-izquierda, violeta abajo-derecha.
+   * Fondo con glow radial sutil (color según la paleta de acento activa).
    * Se pinta detrás de todo el contenido con `pointer-events-none`.
    */
   .bg-glow {
     background-image:
-      radial-gradient(60rem 40rem at 12% -10%, rgb(79 140 255 / 0.14), transparent 60%),
-      radial-gradient(50rem 35rem at 88% 0%, rgb(168 85 247 / 0.12), transparent 60%);
+      radial-gradient(
+        60rem 40rem at 12% -10%,
+        rgb(var(--glow-a) / 0.14),
+        transparent 60%
+      ),
+      radial-gradient(50rem 35rem at 88% 0%, rgb(var(--glow-b) / 0.12), transparent 60%);
   }
 
   /* Rejilla técnica muy tenue, refuerza la metáfora dev */
@@ -100,6 +218,12 @@
       linear-gradient(to bottom, rgb(255 255 255 / 0.025) 1px, transparent 1px);
     background-size: 44px 44px;
     mask-image: radial-gradient(75rem 50rem at 50% 0%, #000 0%, transparent 75%);
+  }
+
+  [data-theme="light"] .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(16 21 42 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(16 21 42 / 0.05) 1px, transparent 1px);
   }
 
   /* Texto con degradado azul→violeta */
@@ -117,8 +241,15 @@
   /* Glow suave reutilizable al hacer hover */
   .glow-hover {
     box-shadow:
-      0 0 0 1px rgb(109 94 252 / 0.25),
-      0 12px 40px -12px rgb(79 140 255 / 0.35);
+      0 0 0 1px rgb(var(--glow-c) / 0.25),
+      0 12px 40px -12px rgb(var(--glow-a) / 0.35);
+  }
+
+  /* Glow de las tarjetas al hacer hover (sigue la paleta de acento) */
+  .card-hover:hover {
+    box-shadow:
+      0 0 0 1px rgb(var(--glow-c) / 0.25),
+      0 16px 48px -16px rgb(var(--glow-a) / 0.4);
   }
 }
 
@@ -195,4 +326,20 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/*
+ * Preferencia "Animaciones: reducidas" del panel de configuración.
+ * Mismo efecto que prefers-reduced-motion, aplicado por atributo en <html>.
+ */
+html[data-motion="reduced"] {
+  scroll-behavior: auto;
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
 }
