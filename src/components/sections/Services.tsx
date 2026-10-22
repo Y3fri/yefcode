@@ -45,14 +45,20 @@ function ServiceIcon({ id }: { id: string }) {
   if (id === "events") {
     return (
       <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6">
-        <path d="M12 20s-6.5-4.2-8.5-8A4.6 4.6 0 0 1 12 7.6 4.6 4.6 0 0 1 20.5 12c-2 3.8-8.5 8-8.5 8Z" strokeLinejoin="round" />
+        <path
+          d="M12 20s-6.5-4.2-8.5-8A4.6 4.6 0 0 1 12 7.6 4.6 4.6 0 0 1 20.5 12c-2 3.8-8.5 8-8.5 8Z"
+          strokeLinejoin="round"
+        />
       </svg>
     );
   }
 
   return (
     <svg {...common} fill="none" stroke="currentColor" strokeWidth="1.6">
-      <path d="M12 4.5 13.8 9l4.7 1.8-4.7 1.8L12 17.5l-1.8-4.9L5.5 10.8 10.2 9 12 4.5Z" strokeLinejoin="round" />
+      <path
+        d="M12 4.5 13.8 9l4.7 1.8-4.7 1.8L12 17.5l-1.8-4.9L5.5 10.8 10.2 9 12 4.5Z"
+        strokeLinejoin="round"
+      />
       <path d="M18.5 4v3M20 5.5h-3" strokeLinecap="round" />
     </svg>
   );

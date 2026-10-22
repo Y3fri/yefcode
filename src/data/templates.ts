@@ -179,12 +179,18 @@ export const negocioLocalTemplate = {
     ],
     hoursTitle: L("Horarios", "Opening hours"),
     hours: [
-      L("Lunes a viernes: 8:00 a. m. – 6:00 p. m.", "Monday to Friday: 8:00 a.m. – 6:00 p.m."),
+      L(
+        "Lunes a viernes: 8:00 a. m. – 6:00 p. m.",
+        "Monday to Friday: 8:00 a.m. – 6:00 p.m.",
+      ),
       L("Sábados: 9:00 a. m. – 1:00 p. m.", "Saturdays: 9:00 a.m. – 1:00 p.m."),
       L("Domingos: cerrado", "Sundays: closed"),
     ],
     locationTitle: L("Ubicación", "Location"),
-    address: L("Calle 00 # 00-00 · Ciudad, Colombia", "Calle 00 # 00-00 · City, Colombia"),
+    address: L(
+      "Calle 00 # 00-00 · Ciudad, Colombia",
+      "Calle 00 # 00-00 · City, Colombia",
+    ),
   },
 } as const;
 

@@ -3,10 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Chip } from "@/components/ui/Chip";
-import {
-  useLocalizedText,
-  useSettings,
-} from "@/components/providers/SettingsProvider";
+import { useLocalizedText, useSettings } from "@/components/providers/SettingsProvider";
 import { whatsappUrlForTemplate } from "@/data/socials";
 import type { Template } from "@/data/templates";
 

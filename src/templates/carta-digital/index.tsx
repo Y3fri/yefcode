@@ -50,7 +50,9 @@ export function CartaDigitalDemo() {
       </div>
 
       <div className="relative mx-auto max-w-xl px-6 py-16 text-center sm:px-10 sm:py-24">
-        <p className="font-mono text-sm tracking-wide text-rose-400">{text(demo.kicker)}</p>
+        <p className="font-mono text-sm tracking-wide text-rose-400">
+          {text(demo.kicker)}
+        </p>
         <h2 className="mt-3 text-3xl font-bold tracking-tight text-rose-900 sm:text-4xl">
           {text(demo.title)}
         </h2>
@@ -64,7 +66,7 @@ export function CartaDigitalDemo() {
         </div>
 
         <div className="mt-10 text-right">
-          <p className="text-sm italic text-rose-500">{text(demo.closing)}</p>
+          <p className="text-sm text-rose-500 italic">{text(demo.closing)}</p>
           <p className="mt-1 text-lg font-semibold text-rose-900">{text(demo.sender)}</p>
         </div>
       </div>

@@ -80,7 +80,9 @@ export function CvProfesionalDemo() {
           <ol className="mt-4 space-y-4">
             {demo.education.map((item) => (
               <li key={item.id}>
-                <p className="text-sm font-semibold text-slate-900">{text(item.degree)}</p>
+                <p className="text-sm font-semibold text-slate-900">
+                  {text(item.degree)}
+                </p>
                 <p className="mt-0.5 text-sm text-slate-500">
                   {text(item.org)} · {text(item.period)}
                 </p>

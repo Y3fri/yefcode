@@ -15,9 +15,7 @@ export function generateStaticParams() {
   return templates.map((template) => ({ slug: template.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: TemplatePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: TemplatePageProps): Promise<Metadata> {
   const { slug } = await params;
   const template = getTemplateBySlug(slug);
   if (!template) return {};

@@ -61,7 +61,9 @@ export function InvitacionEventoDemo() {
         <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
           {text(demo.names)}
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-violet-200">{text(demo.line)}</p>
+        <p className="mt-4 text-base leading-relaxed text-violet-200">
+          {text(demo.line)}
+        </p>
 
         <div className="mt-10 rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur">
           <p className="font-mono text-xs tracking-wide text-violet-300 uppercase">
@@ -104,7 +106,7 @@ export function InvitacionEventoDemo() {
           {text(demo.rsvpCta)}
         </button>
 
-        <p className="mt-10 text-sm italic text-violet-300">{text(demo.footerNote)}</p>
+        <p className="mt-10 text-sm text-violet-300 italic">{text(demo.footerNote)}</p>
       </div>
     </div>
   );

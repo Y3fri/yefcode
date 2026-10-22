@@ -182,7 +182,8 @@ export const en: Dictionary = {
   faq: {
     command: "git log --faq",
     title: "Frequently asked questions",
-    description: "The essentials before you message me: timelines, changes, payments and domains.",
+    description:
+      "The essentials before you message me: timelines, changes, payments and domains.",
     items: [
       {
         id: "time",

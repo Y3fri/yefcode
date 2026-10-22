@@ -45,7 +45,10 @@ export const pricingPackages: readonly PricingPackage[] = [
     ),
     features: [
       L("Catálogo, horarios y ubicación.", "Catalog, hours and location."),
-      L("Botón de WhatsApp para que te escriban.", "A WhatsApp button so customers can message you."),
+      L(
+        "Botón de WhatsApp para que te escriban.",
+        "A WhatsApp button so customers can message you.",
+      ),
       L("Se ve bien en celular y carga rápido.", "Looks good on mobile and loads fast."),
     ],
     // TODO(yeferson): precio en COP para el paquete Negocio.
@@ -59,7 +62,10 @@ export const pricingPackages: readonly PricingPackage[] = [
       "If your idea doesn't fit a package, we build it to your needs.",
     ),
     features: [
-      L("Portafolio, sistema o una idea nueva.", "Portfolio, system or a brand-new idea."),
+      L(
+        "Portafolio, sistema o una idea nueva.",
+        "Portfolio, system or a brand-new idea.",
+      ),
       L("Lo definimos en una conversación.", "We define it in a conversation."),
       L("Propuesta clara antes de empezar.", "A clear proposal before we start."),
     ],

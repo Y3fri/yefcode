@@ -27,7 +27,10 @@ export function NegocioLocalDemo() {
       <div className="mx-auto max-w-4xl px-6 py-10 sm:px-10 sm:py-14">
         <header className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-xl font-bold tracking-tight">{text(demo.name)}</h2>
-          <nav aria-label={text(demo.name)} className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500">
+          <nav
+            aria-label={text(demo.name)}
+            className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-500"
+          >
             <a href="#demo-products" className="transition-colors hover:text-emerald-700">
               {text(demo.productsTitle)}
             </a>
@@ -91,8 +94,13 @@ export function NegocioLocalDemo() {
         </section>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
-          <section id="demo-hours" className="scroll-mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-            <h3 className="text-base font-semibold text-slate-900">{text(demo.hoursTitle)}</h3>
+          <section
+            id="demo-hours"
+            className="scroll-mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+          >
+            <h3 className="text-base font-semibold text-slate-900">
+              {text(demo.hoursTitle)}
+            </h3>
             <ul className="mt-3 space-y-1.5 text-sm text-slate-600">
               {demo.hours.map((line) => (
                 <li key={line.es}>{text(line)}</li>
@@ -100,7 +108,10 @@ export function NegocioLocalDemo() {
             </ul>
           </section>
 
-          <section id="demo-location" className="scroll-mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+          <section
+            id="demo-location"
+            className="scroll-mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+          >
             <h3 className="text-base font-semibold text-slate-900">
               {text(demo.locationTitle)}
             </h3>

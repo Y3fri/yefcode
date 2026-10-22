@@ -67,7 +67,9 @@ export function Pricing() {
                         <path d="m2.5 6.5 2.5 2.5 4.5-5.5" />
                       </svg>
                     </span>
-                    <span className="text-sm leading-relaxed text-muted">{text(feature)}</span>
+                    <span className="text-sm leading-relaxed text-muted">
+                      {text(feature)}
+                    </span>
                   </li>
                 ))}
               </ul>

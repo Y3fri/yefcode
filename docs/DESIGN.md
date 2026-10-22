@@ -64,11 +64,11 @@ El sitio nace en **oscuro** (diseño original intacto). El panel de ajustes
 aplica sobre `<html>` tres atributos que redefinen variables CSS en
 `globals.css`, sin tocar componentes:
 
-| Atributo             | Valores                                  |
-| -------------------- | ---------------------------------------- |
-| `data-theme`         | `dark` (defecto), `light`, `system`      |
-| `data-accent`        | `blue` (defecto), `violet`, `green`, `amber` |
-| `data-motion`        | `full` (defecto), `reduced`              |
+| Atributo      | Valores                                      |
+| ------------- | -------------------------------------------- |
+| `data-theme`  | `dark` (defecto), `light`, `system`          |
+| `data-accent` | `blue` (defecto), `violet`, `green`, `amber` |
+| `data-motion` | `full` (defecto), `reduced`                  |
 
 - `[data-theme=light]` redefine fondo, superficies, bordes, texto, `ok`/`warn`
   y acentos con contraste AA sobre blanco.
@@ -191,7 +191,7 @@ al botón. El estado vive en `SettingsProvider` y en `localStorage`.
 Fija, con `backdrop-blur-lg` y borde inferior translúcido.
 
 - Escritorio: enlaces mono + pastilla `HEAD → main` con punto verde parpadeante
-  + botón de ajustes.
+  - botón de ajustes.
 - Móvil: botón hamburguesa con `aria-expanded` / `aria-controls`. El panel
   bloquea el scroll del body, cierra con **Escape** y al navegar.
 

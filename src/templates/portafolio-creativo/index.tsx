@@ -24,13 +24,16 @@ export function PortafolioCreativoDemo() {
   const { demo } = data;
   const [filter, setFilter] = useState<"all" | DemoFilterId>("all");
 
-  const items = filter === "all" ? demo.items : demo.items.filter((w) => w.cat === filter);
+  const items =
+    filter === "all" ? demo.items : demo.items.filter((w) => w.cat === filter);
 
   return (
     <div className="bg-white font-sans text-slate-900">
       <div className="mx-auto max-w-4xl px-6 py-12 sm:px-10 sm:py-16">
         <header>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{text(demo.name)}</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            {text(demo.name)}
+          </h2>
           <p className="mt-1 text-base text-slate-500">{text(demo.tagline)}</p>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600">
             {text(demo.about)}
@@ -85,7 +88,9 @@ export function PortafolioCreativoDemo() {
                   className={`aspect-[4/3] w-full bg-gradient-to-br ${tileTones[item.cat]}`}
                 />
                 <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
-                  <p className="text-sm font-semibold text-slate-900">{text(item.title)}</p>
+                  <p className="text-sm font-semibold text-slate-900">
+                    {text(item.title)}
+                  </p>
                   {label ? (
                     <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs text-slate-500">
                       {text(label)}
