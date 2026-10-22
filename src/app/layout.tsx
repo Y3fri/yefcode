@@ -30,14 +30,17 @@ export const metadata: Metadata = {
   },
   description: es.meta.description,
   keywords: [
+    "páginas web para negocios",
+    "páginas web en Colombia",
+    "hoja de vida web",
+    "portafolio web",
     "desarrollador full stack",
     "Yeferson Guzmán",
-    "portafolio",
+    "plantillas web",
     "React",
     "Next.js",
     "Python",
     "FastAPI",
-    "API REST",
     "Colombia",
     "Facatativá",
   ],
@@ -71,20 +74,46 @@ export const viewport: Viewport = {
   colorScheme: "dark light",
 };
 
-/** JSON-LD Person: solo datos públicos confirmados (sin teléfono). */
+/** JSON-LD: solo datos públicos confirmados (sin teléfono en ninguno). */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.fullName,
-  jobTitle: profile.role,
-  url: siteUrl,
-  sameAs: [profileFacts.githubUrl, profileFacts.linkedinUrl],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: profile.address.locality,
-    addressRegion: profile.address.region,
-    addressCountry: profile.address.countryCode,
-  },
+  "@graph": [
+    {
+      "@type": "Person",
+      name: profile.fullName,
+      jobTitle: profile.role,
+      url: siteUrl,
+      sameAs: [profileFacts.githubUrl, profileFacts.linkedinUrl],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: profile.address.locality,
+        addressRegion: profile.address.region,
+        addressCountry: profile.address.countryCode,
+      },
+    },
+    {
+      "@type": "ProfessionalService",
+      name: profile.fullName,
+      description: es.meta.description,
+      url: siteUrl,
+      serviceType: "Páginas web para personas y negocios",
+      areaServed: {
+        "@type": "Country",
+        name: profile.address.country,
+      },
+      founder: {
+        "@type": "Person",
+        name: profile.fullName,
+      },
+      sameAs: [profileFacts.githubUrl, profileFacts.linkedinUrl],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: profile.address.locality,
+        addressRegion: profile.address.region,
+        addressCountry: profile.address.countryCode,
+      },
+    },
+  ],
 };
 
 /**
@@ -118,7 +147,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: preferencesInitScript }}
         />
         <script
-          id="yefcode-person-jsonld"
+          id="yefcode-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
