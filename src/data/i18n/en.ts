@@ -107,7 +107,7 @@ export const en: Dictionary = {
     cta: "I want this template",
     demoBadge: "Demo",
     demoNote:
-      "Demo with sample data: names, texts and photos are fictional. In the real template they're replaced with yours.",
+      "Demo with sample data: names, texts and photos are fictional, and the buttons don't do anything. In the real template they're replaced with yours.",
     filterLabel: "Filter templates by category",
     all: "All",
     categories: {

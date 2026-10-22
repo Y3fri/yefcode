@@ -106,7 +106,7 @@ export const es = {
     cta: "Quiero esta plantilla",
     demoBadge: "Demo",
     demoNote:
-      "Demo con datos de ejemplo: nombres, textos y fotos son ficticios. En la plantilla real se reemplazan por los tuyos.",
+      "Demo con datos de ejemplo: nombres, textos y fotos son ficticios, y los botones no hacen nada. En la plantilla real se reemplazan por los tuyos.",
     filterLabel: "Filtrar plantillas por categoría",
     all: "Todas",
     categories: {

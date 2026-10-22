@@ -343,3 +343,36 @@ html[data-motion="reduced"] *::after {
   animation-iteration-count: 1 !important;
   transition-duration: 0.001ms !important;
 }
+
+/*
+ * ============================================================
+ *  DEMOS DE PLANTILLAS (src/templates/*)
+ *  Estilos propios de las demos. Cada plantilla es un mini-sitio
+ *  con su paleta (justificado: no comparte el diseño del portafolio).
+ *  Las reglas globales de reduced-motion de arriba ya les aplican.
+ * ============================================================
+ */
+
+@keyframes demo-heart-float {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-160px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Corazones flotantes de la demo carta-digital (decorativos). */
+.demo-heart {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;
+  animation-name: demo-heart-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
