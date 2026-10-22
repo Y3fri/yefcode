@@ -5,6 +5,10 @@ import { NegocioLocalDemo } from "./negocio-local";
 import { PortafolioCreativoDemo } from "./portafolio-creativo";
 import { CartaDigitalDemo } from "./carta-digital";
 import { InvitacionEventoDemo } from "./invitacion-evento";
+import { RestauranteCafeDemo } from "./restaurante-cafe";
+import { TiendaOnlineDemo } from "./tienda-online";
+import { ClinicaCitasDemo } from "./clinica-citas";
+import { CursoClasesDemo } from "./curso-clases";
 
 /**
  * Registro slug → componente de demo.
@@ -17,4 +21,8 @@ export const templateDemos: Readonly<Record<TemplateSlug, ComponentType>> = {
   "portafolio-creativo": PortafolioCreativoDemo,
   "carta-digital": CartaDigitalDemo,
   "invitacion-evento": InvitacionEventoDemo,
+  "restaurante-cafe": RestauranteCafeDemo,
+  "tienda-online": TiendaOnlineDemo,
+  "clinica-citas": ClinicaCitasDemo,
+  "curso-clases": CursoClasesDemo,
 };

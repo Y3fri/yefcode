@@ -335,6 +335,370 @@ export const invitacionEventoTemplate = {
   },
 } as const;
 
+export const restauranteCafeTemplate = {
+  slug: "restaurante-cafe",
+  title: L("Página para restaurante o café", "Restaurant or café page"),
+  category: "negocio",
+  description: L(
+    "Menú digital con precios, horarios, ubicación y reserva de mesa: que el comensal vea la carta antes de llegar.",
+    "A digital menu with prices, hours, location and table booking: let diners see the menu before they arrive.",
+  ),
+  bestFor: L(
+    "Restaurantes, cafés, panaderías y pizzerías.",
+    "Restaurants, cafés, bakeries and pizzerias.",
+  ),
+  features: [
+    L("Menú por categorías con precios", "Menu by category with prices"),
+    L("Reserva de mesa por WhatsApp", "Table booking via WhatsApp"),
+    L("Horarios y ubicación claros", "Clear hours and location"),
+    L("Galería del lugar", "Gallery of the place"),
+  ],
+  previewImage: "/templates/restaurante-cafe.svg",
+  demo: {
+    name: L("Café de Ejemplo", "Example Café"),
+    tagline: L(
+      "Cocina casera y café recién hecho",
+      "Home-style cooking and freshly made coffee",
+    ),
+    heroTitle: L(
+      "Cerca de ti, con sabor de casa",
+      "Close to you, with a home-cooked taste",
+    ),
+    menuTitle: L("Menú", "Menu"),
+    menuCategories: [
+      {
+        id: "drinks",
+        name: L("Bebidas", "Drinks"),
+        items: [
+          {
+            id: "drink-1",
+            name: L("Café americano", "American coffee"),
+            price: L("$ 4.000", "$ 4,000"),
+          },
+          {
+            id: "drink-2",
+            name: L("Café con leche", "Coffee with milk"),
+            price: L("$ 5.000", "$ 5,000"),
+          },
+          {
+            id: "drink-3",
+            name: L("Jugo natural", "Fresh juice"),
+            price: L("$ 6.000", "$ 6,000"),
+          },
+        ],
+      },
+      {
+        id: "mains",
+        name: L("Fuertes", "Mains"),
+        items: [
+          {
+            id: "main-1",
+            name: L("Sopa del día", "Soup of the day"),
+            price: L("$ 12.000", "$ 12,000"),
+          },
+          {
+            id: "main-2",
+            name: L("Bandeja del día", "Daily platter"),
+            price: L("$ 18.000", "$ 18,000"),
+          },
+          {
+            id: "main-3",
+            name: L("Trucha al ajillo", "Garlic trout"),
+            price: L("$ 20.000", "$ 20,000"),
+          },
+        ],
+      },
+      {
+        id: "desserts",
+        name: L("Postres", "Desserts"),
+        items: [
+          {
+            id: "dessert-1",
+            name: L("Postre del día", "Dessert of the day"),
+            price: L("$ 8.000", "$ 8,000"),
+          },
+          {
+            id: "dessert-2",
+            name: L("Brownie con helado", "Brownie with ice cream"),
+            price: L("$ 10.000", "$ 10,000"),
+          },
+        ],
+      },
+    ],
+    reserveCta: L("Reservar mesa", "Book a table"),
+    galleryTitle: L("El lugar", "The place"),
+    hoursTitle: L("Horarios", "Opening hours"),
+    hours: [
+      L(
+        "Lunes a viernes: 7:00 a. m. – 8:00 p. m.",
+        "Monday to Friday: 7:00 a.m. – 8:00 p.m.",
+      ),
+      L("Sábados: 8:00 a. m. – 9:00 p. m.", "Saturdays: 8:00 a.m. – 9:00 p.m."),
+      L("Domingos: 8:00 a. m. – 3:00 p. m.", "Sundays: 8:00 a.m. – 3:00 p.m."),
+    ],
+    locationTitle: L("Ubicación", "Location"),
+    address: L(
+      "Calle 00 # 00-00 · Ciudad, Colombia",
+      "Calle 00 # 00-00 · City, Colombia",
+    ),
+  },
+} as const;
+
+export const tiendaOnlineTemplate = {
+  slug: "tienda-online",
+  title: L("Tienda online", "Online store"),
+  category: "negocio",
+  description: L(
+    "Catálogo de productos con precios y filtros por categoría; el pedido se cierra por WhatsApp, sin pasarela de pagos.",
+    "A product catalog with prices and category filters; orders are closed over WhatsApp, no payment gateway needed.",
+  ),
+  bestFor: L(
+    "Negocios que venden por catálogo y toman pedidos por mensaje.",
+    "Businesses that sell from a catalog and take orders by message.",
+  ),
+  features: [
+    L("Catálogo con precios", "Catalog with prices"),
+    L("Filtros por categoría", "Category filters"),
+    L("Pedido por WhatsApp", "Order via WhatsApp"),
+    L("Sin pasarela de pagos", "No payment gateway needed"),
+  ],
+  previewImage: "/templates/tienda-online.svg",
+  demo: {
+    name: L("Tienda de Ejemplo", "Example Store"),
+    tagline: L("Envíos a toda la ciudad", "Delivery across the city"),
+    cartLabel: L("Carrito", "Cart"),
+    cartEmpty: L("Tu carrito está vacío", "Your cart is empty"),
+    filterAria: L("Filtrar productos por categoría", "Filter products by category"),
+    allFilter: L("Todos", "All"),
+    filters: [
+      { id: "home", label: L("Hogar", "Home") },
+      { id: "gifts", label: L("Regalos", "Gifts") },
+      { id: "accessories", label: L("Accesorios", "Accessories") },
+    ],
+    products: [
+      {
+        id: "product-1",
+        name: L("Lámpara de mesa", "Table lamp"),
+        price: L("$ 39.900", "$ 39,900"),
+        cat: "home",
+      },
+      {
+        id: "product-2",
+        name: L("Set de mantas", "Blanket set"),
+        price: L("$ 49.900", "$ 49,900"),
+        cat: "home",
+      },
+      {
+        id: "product-3",
+        name: L("Caja de regalo", "Gift box"),
+        price: L("$ 29.900", "$ 29,900"),
+        cat: "gifts",
+      },
+      {
+        id: "product-4",
+        name: L("Tarjeta personalizada", "Custom card"),
+        price: L("$ 9.900", "$ 9,900"),
+        cat: "gifts",
+      },
+      {
+        id: "product-5",
+        name: L("Estuche para celular", "Phone case"),
+        price: L("$ 19.900", "$ 19,900"),
+        cat: "accessories",
+      },
+      {
+        id: "product-6",
+        name: L("Llavero de cuero", "Leather keychain"),
+        price: L("$ 14.900", "$ 14,900"),
+        cat: "accessories",
+      },
+    ],
+    addCta: L("Agregar al carrito", "Add to cart"),
+    orderCta: L("Hacer pedido por WhatsApp", "Order via WhatsApp"),
+    shippingNote: L(
+      "Envío gratis en pedidos desde $ 100.000 (ejemplo).",
+      "Free shipping on orders from $ 100,000 (example).",
+    ),
+  },
+} as const;
+
+export const clinicaCitasTemplate = {
+  slug: "clinica-citas",
+  title: L("Página para clínica o consultorio", "Clinic or practice page"),
+  category: "negocio",
+  description: L(
+    "Servicios, perfiles del equipo y agenda de citas en una página tranquila y clara para tus pacientes.",
+    "Services, team profiles and appointment scheduling in a calm, clear page for your patients.",
+  ),
+  bestFor: L(
+    "Consultorios médicos, odontológicos, de psicología y terapias.",
+    "Medical, dental, psychology and therapy practices.",
+  ),
+  features: [
+    L("Servicios explicados con calma", "Services explained calmly"),
+    L("Agenda de citas en línea", "Online appointment scheduling"),
+    L("Perfil del profesional", "Professional profile"),
+    L("Ubicación y contacto", "Location and contact"),
+  ],
+  previewImage: "/templates/clinica-citas.svg",
+  demo: {
+    name: L("Consultorio de Ejemplo", "Example Practice"),
+    tagline: L("Atención personalizada", "Personalized care"),
+    heroTitle: L("Tu salud, con tiempo y claridad", "Your health, with time and clarity"),
+    heroText: L(
+      "Agenda tu cita en línea y recibe la confirmación por WhatsApp. También puedes escribir antes si tienes dudas.",
+      "Book your appointment online and get confirmation on WhatsApp. You can also write beforehand if you have questions.",
+    ),
+    servicesTitle: L("Servicios", "Services"),
+    services: [
+      {
+        id: "service-1",
+        name: L("Consulta inicial", "Initial consultation"),
+        text: L(
+          "Una primera cita para conocer tu caso y resolver tus dudas.",
+          "A first appointment to understand your case and answer your questions.",
+        ),
+      },
+      {
+        id: "service-2",
+        name: L("Seguimiento", "Follow-up"),
+        text: L(
+          "Citas periódicas para revisar tu avance y ajustar el plan.",
+          "Periodic visits to review your progress and adjust the plan.",
+        ),
+      },
+      {
+        id: "service-3",
+        name: L("Atención prioritaria", "Priority care"),
+        text: L(
+          "Huecos reservados para lo que no puede esperar.",
+          "Reserved slots for things that can't wait.",
+        ),
+      },
+      {
+        id: "service-4",
+        name: L("Asesoría en línea", "Online guidance"),
+        text: L(
+          "Resuelve dudas rápidas por mensaje entre citas.",
+          "Quick questions answered by message between visits.",
+        ),
+      },
+    ],
+    stepsTitle: L("Cómo agendar", "How to book"),
+    steps: [
+      L(
+        "Elige el servicio y el día que te acomode.",
+        "Pick the service and a day that suits you.",
+      ),
+      L("Déjanos tus datos de contacto.", "Leave us your contact details."),
+      L("Recibe la confirmación de tu cita.", "Get confirmation of your appointment."),
+    ],
+    scheduleTitle: L("Agenda", "Schedule"),
+    scheduleDays: L("Lunes a viernes", "Monday to Friday"),
+    scheduleHours: L("8:00 a. m. – 6:00 p. m.", "8:00 a.m. – 6:00 p.m."),
+    timeSlotsAria: L("Horarios disponibles de ejemplo", "Example available times"),
+    timeSlots: [
+      { id: "slot-1", label: L("9:00 a. m.", "9:00 a.m.") },
+      { id: "slot-2", label: L("11:00 a. m.", "11:00 a.m.") },
+      { id: "slot-3", label: L("3:00 p. m.", "3:00 p.m.") },
+      { id: "slot-4", label: L("5:00 p. m.", "5:00 p.m.") },
+    ],
+    professionalLabel: L("Quién te atiende", "Who assists you"),
+    professional: L("Nombre Apellido", "First Last"),
+    professionalRole: L("Tu especialidad profesional", "Your professional specialty"),
+    bookingCta: L("Agendar cita", "Book an appointment"),
+    address: L(
+      "Calle 00 # 00-00 · Ciudad, Colombia",
+      "Calle 00 # 00-00 · City, Colombia",
+    ),
+  },
+} as const;
+
+export const cursoClasesTemplate = {
+  slug: "curso-clases",
+  title: L("Página de curso o clases", "Course or classes page"),
+  category: "negocio",
+  description: L(
+    "Presenta tu curso: qué incluye, temario, precio e inscripción, todo en una sola página.",
+    "Present your course: what's included, syllabus, price and enrollment, all on one page.",
+  ),
+  bestFor: L(
+    "Cursos, talleres, clases particulares y academias.",
+    "Courses, workshops, private classes and academies.",
+  ),
+  features: [
+    L("Temario por módulos", "Syllabus by module"),
+    L("Precio e inscripción claros", "Clear price and enrollment"),
+    L('Sección "para quién es"', '"Who it\'s for" section'),
+    L("Botón de inscripción", "Enrollment button"),
+  ],
+  previewImage: "/templates/curso-clases.svg",
+  demo: {
+    name: L("Curso de Ejemplo", "Example Course"),
+    instructor: L("Nombre Apellido", "First Last"),
+    instructorRole: L("Tu profesión o especialidad", "Your profession or specialty"),
+    heroTitle: L("Aprende [tu tema] paso a paso", "Learn [your topic] step by step"),
+    heroText: L(
+      "Cuenta en dos líneas qué aprenderán y cómo lo enseñas: en video, en vivo o con ejercicios.",
+      "In two lines, say what people will learn and how you teach: on video, live or with exercises.",
+    ),
+    price: L("$ 00.000 COP", "$ 00,000 COP"),
+    priceNote: L("Precio de ejemplo", "Example price"),
+    enrollCta: L("Inscribirme", "Enroll"),
+    includesTitle: L("Qué incluye", "What's included"),
+    includes: [
+      L("Clases grabadas a tu ritmo", "Recorded classes at your pace"),
+      L("Ejercicios prácticos", "Practical exercises"),
+      L("Certificado al terminar", "Certificate on completion"),
+      L("Soporte por WhatsApp", "Support via WhatsApp"),
+    ],
+    syllabusTitle: L("Temario", "Syllabus"),
+    modules: [
+      {
+        id: "module-1",
+        number: L("Módulo 1", "Module 1"),
+        title: L("Fundamentos", "Foundations"),
+        detail: L(
+          "Lo esencial para empezar con una base bien clara.",
+          "The essentials to start with a clear foundation.",
+        ),
+      },
+      {
+        id: "module-2",
+        number: L("Módulo 2", "Module 2"),
+        title: L("Práctica guiada", "Guided practice"),
+        detail: L(
+          "Ejercicios paso a paso con ejemplos resueltos.",
+          "Step-by-step exercises with worked examples.",
+        ),
+      },
+      {
+        id: "module-3",
+        number: L("Módulo 3", "Module 3"),
+        title: L("Proyecto final", "Final project"),
+        detail: L(
+          "Un proyecto que puedes mostrar en tu portafolio.",
+          "A project you can show in your portfolio.",
+        ),
+      },
+      {
+        id: "module-4",
+        number: L("Módulo 4", "Module 4"),
+        title: L("Siguientes pasos", "Next steps"),
+        detail: L(
+          "Cómo seguir aprendiendo después de terminar el curso.",
+          "How to keep learning after the course.",
+        ),
+      },
+    ],
+    forTitle: L("¿Para quién es?", "Who is it for?"),
+    forText: L(
+      "Describe el nivel y a quién va dirigido tu curso: principiantes, gente con base o profesionales que quieren actualizar.",
+      "Describe the level and who your course is for: beginners, people with some base, or professionals who want to update.",
+    ),
+  },
+} as const;
+
 /** Tupla tipada de la que se derivan los slugs literales. */
 const allTemplates = [
   cvProfesionalTemplate,
@@ -342,6 +706,10 @@ const allTemplates = [
   portafolioCreativoTemplate,
   cartaDigitalTemplate,
   invitacionEventoTemplate,
+  restauranteCafeTemplate,
+  tiendaOnlineTemplate,
+  clinicaCitasTemplate,
+  cursoClasesTemplate,
 ] as const;
 
 /** Catálogo completo, en el orden de la galería. */
