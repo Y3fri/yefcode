@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { TerminalLine } from "@/lib/types";
 
@@ -19,7 +19,6 @@ type TerminalProps = {
 export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) {
   const [typed, setTyped] = useState<readonly string[]>([]);
   const [done, setDone] = useState(false);
-  const indexRef = useRef(0);
 
   const reduceMotion = useMemo(
     () =>
@@ -35,8 +34,13 @@ export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) 
     let charTimer: ReturnType<typeof setTimeout> | undefined;
     let lineTimer: ReturnType<typeof setTimeout> | undefined;
 
-    const typeLine = () => {
-      const current = lines[indexRef.current];
+    // El índice de línea viaja como parámetro (no como ref mutable):
+    // leer una ref dentro del updater de setState hacía que React
+    // ejecutara el updater DESPUÉS de incrementar la ref, y el último
+    // carácter de cada línea caía en el slot siguiente, donde era
+    // sobrescrito. Con el parámetro, cada línea escribe en su slot.
+    const typeLine = (lineIndex: number) => {
+      const current = lines[lineIndex];
       if (!current) {
         setDone(true);
         return;
@@ -45,17 +49,17 @@ export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) 
       let charIndex = 0;
       const tick = () => {
         charIndex += 1;
+        const partial = current.text.slice(0, charIndex);
         setTyped((prev) => {
           const next = [...prev];
-          next[indexRef.current] = current.text.slice(0, charIndex);
+          next[lineIndex] = partial;
           return next;
         });
 
         if (charIndex < current.text.length) {
           charTimer = setTimeout(tick, typingSpeed);
         } else {
-          indexRef.current += 1;
-          lineTimer = setTimeout(typeLine, 380);
+          lineTimer = setTimeout(() => typeLine(lineIndex + 1), 380);
         }
       };
       tick();
@@ -69,7 +73,7 @@ export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) 
           setDone(true);
           return;
         }
-        typeLine();
+        typeLine(0);
       },
       reduceMotion ? 0 : 500,
     );
