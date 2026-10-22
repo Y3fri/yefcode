@@ -43,7 +43,9 @@ Aplicado con la utilidad `.text-gradient` o `bg-gradient-to-r`.
 
 ### Glow de fondo
 
-Dos radios radiales muy tenues, fijas detrás del contenido:
+Dos radios radiales muy tenues, fijas detrás del contenido. Sus colores salen
+de las variables `--glow-a` / `--glow-b`, que cambian con la paleta de acento
+activa (valores por defecto, azul):
 
 - Azul en la esquina superior izquierda — `rgb(79 140 255 / 0.14)`
 - Violeta en la esquina superior derecha — `rgb(168 85 247 / 0.12)`
@@ -54,6 +56,25 @@ Utilidad: `.bg-glow`. Ambas capas son `pointer-events-none fixed -z-10`.
 
 Cuadrícula de 44 px al 2.5 % de opacidad con `mask-image` que se desvanece
 hacia abajo. Utilidad: `.bg-grid`. Refuerza la estética dev sin distraer.
+En tema claro la cuadrícula invierte a tinta oscura al 5 %.
+
+### Tema claro y paletas de acento
+
+El sitio nace en **oscuro** (diseño original intacto). El panel de ajustes
+aplica sobre `<html>` tres atributos que redefinen variables CSS en
+`globals.css`, sin tocar componentes:
+
+| Atributo             | Valores                                  |
+| -------------------- | ---------------------------------------- |
+| `data-theme`         | `dark` (defecto), `light`, `system`      |
+| `data-accent`        | `blue` (defecto), `violet`, `green`, `amber` |
+| `data-motion`        | `full` (defecto), `reduced`              |
+
+- `[data-theme=light]` redefine fondo, superficies, bordes, texto, `ok`/`warn`
+  y acentos con contraste AA sobre blanco.
+- `[data-accent=…]` redefine `--color-accent-*` y `--glow-*`; el degradado del
+  botón primario, el foco y los enlaces siguen la paleta automáticamente.
+- Las muestras del panel usan `--swatch-*` (una por color y tema).
 
 ---
 
@@ -149,25 +170,36 @@ Componente cliente por el estado interno.
 ### `ProjectCard`
 
 Tarjeta minimalista: media (imagen o video) → overlay con estado y rama →
-nombre + año → descripción → chips → enlace.
+nombre + año → resumen → mi rol → chips → enlaces.
 
-- **Hover:** el borde pasa a índigo, aparece un glow suave y la imagen hace
-  `scale(1.04)` en 500 ms.
-- **Estado:** pastilla `en vivo` (verde) o `en desarrollo` (ámbar).
-- **Enlace:** mono azul con `↗`. Si no hay enlace, muestra `demo en video ↑`.
+- **Hover:** el borde pasa a índigo, aparece un glow suave (`.card-hover`,
+  con el color de la paleta activa) y la imagen hace `scale(1.04)` en 500 ms.
+- **Estado:** pastilla `En producción` (verde) o `En desarrollo` (ámbar),
+  traducida desde el diccionario.
+- **Enlaces:** dominio del sitio con `↗` y, si se confirma, `Código` para el
+  repo. Sin enlace y con video se muestra `demo en video ↑`.
+
+### `SettingsPanel`
+
+Botón de ajustes en la navbar (mismo estilo que el botón de menú) y panel
+`role="dialog"` con cuatro radiogroups: Tema, Idioma, Color de acento y
+Animaciones. Cierre con Escape o clic fuera, trampa de foco y foco de vuelta
+al botón. El estado vive en `SettingsProvider` y en `localStorage`.
 
 ### `Navbar`
 
 Fija, con `backdrop-blur-lg` y borde inferior translúcido.
 
-- Escritorio: enlaces mono + pastilla `HEAD → main` con punto verde parpadeante.
+- Escritorio: enlaces mono + pastilla `HEAD → main` con punto verde parpadeante
+  + botón de ajustes.
 - Móvil: botón hamburguesa con `aria-expanded` / `aria-controls`. El panel
   bloquea el scroll del body, cierra con **Escape** y al navegar.
 
 ### `Footer`
 
-Dos columnas: identidad + ramas, y navegación de redes. Los enlaces placeholder
-muestran un `(TODO)` ámbar.
+Dos columnas: identidad + ramas, y navegación de redes (etiquetas traducidas).
+El borde inferior lleva `© <año> Yeferson Guzmán · Facatativá, Colombia` y
+`branch: main`.
 
 ---
 
@@ -182,11 +214,13 @@ muestran un `(TODO)` ámbar.
 
 Curva: `cubic-bezier(0.16, 1, 0.3, 1)`.
 
-### `prefers-reduced-motion`
+### `prefers-reduced-motion` y ajuste de animaciones
 
 Bloque global en `globals.css`: reduce a `0.001ms` toda duración y transición,
-y desactiva `scroll-behavior: smooth`. El componente `Terminal` además detecta
-la preferencia y renderiza el texto final sin tipear.
+y desactiva `scroll-behavior: smooth`. El mismo bloque existe para
+`html[data-motion="reduced"]`, que aplica el panel de ajustes (por defecto la
+preferencia arranca desde `prefers-reduced-motion`). El componente `Terminal`
+detecta ambas señales y renderiza el texto final sin tipear.
 
 ---
 

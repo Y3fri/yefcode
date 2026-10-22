@@ -53,32 +53,59 @@ una línea `--color-x`, sin tocar configuración JS.
 a Google en producción, con `font-display` óptimo y sin `CLS`. Coincide con la
 estética de referencia (fazt.dev / opencode.ai) pedida en el brief.
 
-## 5. Server Components por defecto
+## 5. Server Components por defecto, cliente donde hace falta
 
-**Decisión:** solo dos componentes usan `"use client"`:
+**Decisión:** son `"use client"` solo los componentes que necesitan estado,
+efectos o el contexto de ajustes:
 
-- `Navbar` (estado del menú móvil, listeners de teclado, bloqueo de scroll).
+- `Navbar` (menú móvil, listeners de teclado, bloqueo de scroll).
+- `Footer`, `SkipLink` y **todas las secciones**, porque consumen el diccionario
+  de idioma vía `useSettings()` (cambio es/en en el cliente).
 - `Terminal` (la animación de tipeo con `useEffect`).
+- `SettingsProvider` y `SettingsPanel` (estado de preferencias + localStorage).
 
-**Por qué:** todo lo demás se renderiza en el servidor y llega como HTML ya
-formado. Menos JavaScript al cliente = carga más rápida y mejor Lighthouse.
+**Por qué:** el cambio de idioma debe ocurrir en el cliente sin recargar un
+sitio estático. Los componentes de presentación sin texto (`Chip`, `GitLabel`,
+`SectionHeading`) siguen siendo Server Components y se vuelven clientes solo al
+ser importados desde uno. El contenido se sigue sirviendo como HTML
+prerenderiado (SSR de los Client Components), así que el SEO no cambia.
 
-**Alternativa descartada:** Framer Motion para las animaciones. Se descartó por
-peso y porque el brief pide explícitamente "sin dependencias pesadas". Las
-animaciones se resuelven con CSS puro (`@keyframes` + `IntersectionObserver`
-no es necesario: basta con `animation` al montar).
+**Alternativa descartada:** rutas por locale (`/en`). Se descartó porque
+duplicaría el sitio y obligaría a lógica de redirección en un proyecto sin
+backend. Framer Motion también se descartó por peso ("sin dependencias
+pesadas"): las animaciones son CSS puro.
+
+## 5.1. Preferencias de usuario sin dependencias
+
+**Decisión:** tema, idioma, acento y animaciones viven en `SettingsProvider`,
+se persisten en `localStorage` (`yefcode.settings`) y se aplican como
+atributos en `<html>` (`data-theme`, `data-accent`, `data-motion`, `lang`).
+
+**Por qué:** atributos + variables CSS = cero re-render de árbol para cambiar
+colores, y el mismo valor lo leen el script inline (previo al paint, sin
+flash) y el proveedor (tras hidratar). Todo con `try/catch` porque
+`localStorage` puede fallar (modo privado, storage bloqueado).
+
+**Sin dependencias:** ni next-themes, ni librerías de i18n: son ~100 líneas
+propias y los diccionarios son objetos tipados.
 
 ## 6. Datos tipados centralizados
 
-**Decisión:** proyectos, perfil y redes viven en `src/data/`, tipados contra
-`src/lib/types.ts`.
+**Decisión:** proyectos, perfil, stack, redes e idiomas viven en `src/data/`,
+tipados contra `src/lib/types.ts`.
 
 **Por qué:** separar datos de presentación permite añadir un proyecto sin tocar
 ningún componente, y el compilador valida que la forma de cada objeto es correcta.
 
-**Detalle de `Project`:** `media` es un tipo discriminado (`kind: "image" |
-"video"`). Esto permite que `ProjectCard` renderice un `<Image>` o un `<video>`
-y que TypeScript garantice que solo se accede a `poster` cuando es un video.
+**Detalle de `Project`:** campos `slug, title, year, status, summary, role,
+stack, branch, image, url?, repo?`. `image` es un tipo discriminado
+(`kind: "image" | "video"`), lo que permite que `ProjectCard` renderice un
+`<Image>` o un `<video>` sin comprobaciones frágiles. `role`, `url` y `repo`
+son opcionales: no se inventan datos que el autor no ha confirmado.
+
+**Detalle de i18n:** `en.ts` está anotado con `Dictionary = typeof es`, así que
+una clave nueva sin traducir **no compila**; `projectCopyEn` está tipado como
+`Record<ProjectSlug, ProjectCopy>` por el mismo motivo.
 
 ## 7. Orden de proyectos
 
@@ -102,12 +129,15 @@ No hay secretos en el repo; solo existe `.env.example` como plantilla.
 
 ## 9. Contenido faltante (TODOs)
 
-**Decisión:** los datos personales desconocidos (foto, bio, correo, GitHub,
-LinkedIn) se dejan como marcadores `TODO(...)` **visibles en la interfaz**,
-no ocultos.
+**Decisión:** los datos personales o de proyectos que faltan (foto, empresa y
+fechas de la experiencia, descripciones y roles de algunos proyectos, enlaces
+al código) se dejan como marcadores `TODO(yeferson)` **en el código**, sin
+inventar nada y sin ensuciar la interfaz pública.
 
-**Por qué:** el brief prohíbe inventar datos personales. Un `TODO` visible es
-honesto y localizable. El inventario completo está en `docs/CONTENT.md`.
+**Por qué:** el brief prohíbe inventar datos. Un `TODO(yeferson)` localizable
+es honesto y comprobable (`rg "TODO\(yeferson\)" src/`). La sección
+Experiencia, además, permanece oculta tras el flag `showExperience` hasta que
+esté completa. El inventario completo está en `docs/CONTENT.md`.
 
 ## 10. Naming y convenciones
 
@@ -120,7 +150,8 @@ honesto y localizable. El inventario completo está en `docs/CONTENT.md`.
 
 | Tema                 | Estado                                                         |
 | -------------------- | -------------------------------------------------------------- |
-| Modo claro (light)   | No incluido: el brief fija "dark por defecto" como única tema. |
+| Modo claro (light)   | Incluido como preferencia opcional; el sitio sigue naciendo oscuro. |
 | Páginas por proyecto | No incluidas: el brief pide tarjetas con enlace, no rutas.     |
 | Formulario contact   | No incluido: el brief pide enlaces mailto/redes, sin backend.  |
 | Analítica            | No incluida: sin dependencias externas ni cookies.             |
+| Server-side i18n     | No incluido: el sitio es estático y el cambio de idioma es en cliente. |

@@ -45,11 +45,12 @@ Abre <http://localhost:3000>.
 src/
 ├── app/          # Layout, página, 404, sitemap, robots, icono
 ├── components/
-│   ├── layout/   # Navbar, Footer
-│   ├── sections/ # Hero, About, Projects, Contact, ProjectCard
-│   └── ui/       # Chip, GitLabel, SectionHeading, Terminal
-├── data/         # projects.ts, profile.ts, socials.ts
-└── lib/          # types.ts, utils.ts
+│   ├── layout/   # Navbar, Footer, SkipLink
+│   ├── providers/# SettingsProvider (tema, idioma, acento, animaciones)
+│   ├── sections/ # Hero, About, Services, Stack, Projects, Experience, Contact
+│   └── ui/       # Chip, GitLabel, SectionHeading, Terminal, SettingsPanel
+├── data/         # profile.ts, socials.ts, projects.ts, stack.ts, i18n/
+└── lib/          # types.ts, settings.ts, utils.ts
 public/projects/  # Imágenes y video de proyectos
 docs/             # ARCHITECTURE.md, DESIGN.md, CONTENT.md
 ```
@@ -97,7 +98,8 @@ el sitemap y Open Graph. Si no existe, se usa un valor por defecto.
 
 1. Pon su imagen en `public/projects/`.
 2. Agrega el objeto en `src/data/projects.ts` (tipado con `Project`).
-3. `pnpm typecheck`. La tarjeta aparece sola.
+3. Agrega su traducción en `src/data/i18n/en.ts` (`projectCopyEn`).
+4. `pnpm typecheck`. La tarjeta aparece sola.
 
 Detalles en [CLAUDE.md](./CLAUDE.md#Cómo-agregar-un-proyecto-nuevo).
 

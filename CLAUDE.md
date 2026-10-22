@@ -5,11 +5,24 @@ Guía para trabajar en este repositorio de forma consistente y segura.
 ## Qué es esto
 
 Portafolio personal estático de **Yeferson Guzmán** (desarrollador full stack).
-Muestra su perfil, proyectos y contacto. **No vende nada** ni tiene backend.
+Muestra su perfil, servicios, stack, proyectos y contacto. **No vende nada** ni tiene backend.
 
 - **Stack:** Next.js 16 (App Router) · TypeScript estricto · Tailwind CSS v4 · pnpm
 - **Salida:** sitio 100 % estático (`output: "export"`) desplegado en Netlify
-- **Idioma:** el sitio y sus textos están en español (`lang="es"`); el código, los nombres de archivos y los commits en inglés.
+- **Idioma:** el español es el predeterminado (`lang="es"`); el sitio ofrece inglés
+  opcional desde el panel de ajustes. Código, nombres de archivos y commits en inglés.
+
+## Regla de oro del contenido
+
+> **Todo texto vive en `src/data`; no se inventan datos; los pendientes llevan `TODO(yeferson)`.**
+
+- Textos traducibles → `src/data/i18n/` (es.ts es la fuente, en.ts debe cubrirlo todo).
+- Datos personales y hechos → `src/data/profile.ts` y `src/data/socials.ts`.
+- Proyectos → `src/data/projects.ts`; stack → `src/data/stack.ts`.
+- **Nunca** dentro de un componente.
+- No se inventan datos: ni años de experiencia, ni empresas, ni títulos, ni
+  métricas, ni clientes. Si falta algo, déjalo marcado como `TODO(yeferson):`
+  en el código y anótalo en `docs/CONTENT.md`.
 
 ## Comandos
 
@@ -31,26 +44,35 @@ Muestra su perfil, proyectos y contacto. **No vende nada** ni tiene backend.
 ├── docs/                     # Documentación de diseño y arquitectura
 │   ├── ARCHITECTURE.md       # Decisiones técnicas y su porqué
 │   ├── DESIGN.md             # Paleta, tokens, espaciado, componentes
-│   └── CONTENT.md            # Inventario de textos y TODOs
+│   └── CONTENT.md            # Regla de contenido, inventario y TODOs
 ├── public/
 │   └── projects/             # Imágenes y video de los proyectos
 └── src/
     ├── app/
-    │   ├── layout.tsx        # Html, fuentes, metadata, Navbar/Footer
-    │   ├── page.tsx          # Página única (Inicio/Sobre mí/Proyectos/Contacto)
+    │   ├── layout.tsx        # Html, script anti-flash, metadata, JSON-LD
+    │   ├── page.tsx          # Página única (todas las secciones)
     │   ├── not-found.tsx     # 404
     │   ├── sitemap.ts        # Sitemap estático
     │   ├── robots.ts         # Robots.txt
     │   ├── icon.svg          # Favicon
-    │   └── globals.css       # Tokens de Tailwind v4 + estilos base
+    │   └── globals.css       # Tokens, tema claro, acentos, motion
     ├── components/
-    │   ├── layout/           # Navbar, Footer
-    │   ├── sections/         # Hero, About, Projects, Contact, ProjectCard
-    │   └── ui/               # Chip, GitLabel, SectionHeading, Terminal
-    ├── data/                 # projects.ts, profile.ts, socials.ts
+    │   ├── layout/           # Navbar, Footer, SkipLink
+    │   ├── providers/        # SettingsProvider (contexto de ajustes + i18n)
+    │   ├── sections/         # Hero, About, Services, Stack, Projects,
+    │   │                     # Experience, Contact, ProjectCard
+    │   └── ui/               # Chip, GitLabel, SectionHeading, Terminal,
+    │                         # SettingsPanel
+    ├── data/
+    │   ├── i18n/             # es.ts (fuente), en.ts, index.ts
+    │   ├── profile.ts        # Datos personales, experiencia, navegación
+    │   ├── projects.ts       # Proyectos (slug, title, year, status, …)
+    │   ├── socials.ts        # Correo, WhatsApp, LinkedIn, GitHub
+    │   └── stack.ts          # Stack agrupado por capa
     └── lib/
         ├── types.ts          # Tipos del dominio
-        └── utils.ts          # cn(), getSiteUrl()
+        ├── settings.ts       # Persistencia de preferencias (localStorage)
+        └── utils.ts          # cn(), getSiteUrl(), getUrlLabel()
 ```
 
 ## Reglas
@@ -64,29 +86,55 @@ Muestra su perfil, proyectos y contacto. **No vende nada** ni tiene backend.
 ### Datos y textos
 
 - **Todo dato o texto editable va en `src/data/`**, nunca dentro de un componente.
-- No inventes datos personales (correo, redes, bio). Si falta, marca un `TODO` visible y avísalo.
+- No inventes datos personales (correo, redes, bio, empresas, fechas, métricas).
+  Si falta, marca un `TODO(yeferson)` visible en el código y avísalo.
+- El español es la fuente (`src/data/i18n/es.ts` y campos en español de
+  `projects.ts`); `en.ts` está tipado para obligar a traducir toda clave nueva.
 
 ### React
 
-- **Server Components por defecto.** Añade `"use client"` solo cuando haga falta (estado, efectos, listeners). Ejemplos actuales: `Navbar` y `Terminal`.
+- **Server Components por defecto.** Añade `"use client"` solo cuando haga falta.
+  Hoy lo son: `Navbar`, `Footer`, `SkipLink`, `SettingsProvider`, `SettingsPanel`,
+  `Terminal` y **las secciones que consumen el diccionario de idioma** (`useSettings`).
 - No pases datos del servidor al cliente si no hace falta.
+- El contenido se sigue sirviendo como HTML prerenderiado: el cambio de idioma
+  ocurre en el cliente tras la hidratación.
+
+### Preferencias (panel de configuración)
+
+- Botón en la navbar → `SettingsPanel`: tema (oscuro/claro/sistema), idioma
+  (es/en), color de acento (4 paletas) y animaciones (activadas/reducidas).
+- Se guardan en `localStorage` bajo `yefcode.settings`, siempre con `try/catch`
+  (`src/lib/settings.ts`).
+- El script inline del `layout.tsx` aplica lo guardado **antes del primer
+  paint** (sin flash de tema incorrecto); `SettingsProvider` lo re-aplica y
+  persiste cambios después de la hidratación.
+- Accesibilidad del panel: `aria-expanded`/`aria-haspopup` en el botón,
+  `role="dialog"` + `aria-modal`, foco inicial en el panel, trampa de foco con
+  Tab y cierre con Escape (devolviendo el foco al botón).
+- El color de acento y el tema se definen **solo** con variables CSS en
+  `globals.css` (`[data-accent=…]`, `[data-theme=light]`). No añadas colores
+  hardcodeados a componentes.
 
 ### Accesibilidad
 
 - Semántica correcta (`header/nav/main/footer`, `h1→h2→h3` sin saltos).
 - Navegación completa por teclado; **foco visible** siempre.
-- Contraste **AA** mínimo. `alt` descriptivo en toda imagen. Etiquetas `sr-only` cuando el texto visible no basta.
+- Contraste **AA** mínimo (verificado en ambos temas). `alt` descriptivo en toda
+  imagen. Etiquetas `sr-only` cuando el texto visible no basta.
 
 ### Rendimiento
 
 - Usa `next/image` con `fill`/`sizes` y lazy loading. Fuentes con `next/font`.
-- **Sin dependencias pesadas.** Meta: Lighthouse 95+.
-- Respeta `prefers-reduced-motion`.
+- **Sin dependencias pesadas.** Meta: Lighthouse 95+. No se han añadido
+  dependencias para i18n ni ajustes: son archivos propios.
+- Respeta `prefers-reduced-motion` y la preferencia `html[data-motion]`.
 
 ### SEO
 
-- `metadata` y Open Graph en `src/app/layout.tsx`.
-- `sitemap.ts` y `robots.ts` activos. `lang="es"`.
+- `metadata` y Open Graph en `src/app/layout.tsx` (título y descripción en español).
+- JSON-LD tipo `Person` en `layout.tsx` (sin teléfono).
+- `sitemap.ts` y `robots.ts` activos. `lang="es"` por defecto.
 
 ### Seguridad
 
@@ -118,30 +166,37 @@ Muestra su perfil, proyectos y contacto. **No vende nada** ni tiene backend.
 
 ```ts
 {
-  id: "mi-proyecto",                    // único, en kebab-case
-  name: "Mi Proyecto",
+  slug: "mi-proyecto",                 // único, en kebab-case
+  title: "Mi Proyecto",
   year: 2026,
-  description: "Una frase clara de qué hace.",
+  status: "live",                      // "live" = en producción | "development"
+  summary: "Una o dos frases claras de qué hace.",
+  role: "Mi rol en el proyecto",       // opcional si aún no está confirmado
   stack: ["React", "FastAPI"],
-  branch: "web",                        // "web" | "api"
-  status: "live",                       // "live" | "development"
-  media: {
-    kind: "image",                      // "image" | "video"
+  branch: "web",                       // "web" | "api"
+  image: {
+    kind: "image",                     // "image" | "video"
     src: "/projects/mi-proyecto.png",
     alt: "Descripción accesible de la captura.",
   },
-  link: { label: "example.com", href: "https://example.com" },
+  url: "https://example.com",          // opcional
+  // repo: "https://github.com/…",     // solo si se confirma publicar el código
 },
 ```
 
-3. Guarda y ejecuta `pnpm typecheck`. La tarjeta se renderiza sola en la sección Proyectos (ordenada por año descendente).
+3. Añade la traducción al inglés en `src/data/i18n/en.ts` (`projectCopyEn`):
+   el mapa está tipado por `slug`, así que **no compila si falta**.
+4. Guarda y ejecuta `pnpm typecheck`. La tarjeta se renderiza sola en la
+   sección Proyectos (ordenada por año descendente).
 
-No hace falta tocar ningún componente. Para un proyecto **sin enlace** (solo demo en video), omite `link` y usa `media.kind: "video"`.
+No hace falta tocar ningún componente. Los campos opcionales ausentes se omiten
+(`role`, `url`, `repo`).
 
 ## Pendientes abiertos (TODOs)
 
-Hay datos personales a completar, marcados con `TODO(...)` en el código y listados en `docs/CONTENT.md`. Búscalos con:
+Los datos por confirmar se marcan con `TODO(yeferson)` en el código y se listan
+en `docs/CONTENT.md`. Búscalos con:
 
 ```
-rg "TODO\(" src/
+rg "TODO\(yeferson\)" src/
 ```
