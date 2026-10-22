@@ -74,7 +74,7 @@ Datos por confirmar (de la versión anterior, siguen abiertos):
 | 18  | **YediCont: qué hace la aplicación**                       | `src/data/projects.ts` | Describe qué problema resuelve y para quién.                                    |
 | 19  | **YediCont: rol concreto**                                 | `src/data/projects.ts` | Igual que DEYLAX.                                                               |
 | 20  | **Free Learning English: rol concreto**                    | `src/data/projects.ts` | Igual que DEYLAX.                                                               |
-| 21  | **Enlace al código (GitHub) de los proyectos**             | `src/data/projects.ts` | Campo `repo` listo en los 6 proyectos; solo se muestra si lo añades.            |
+| 21  | **Enlace al código (GitHub) de los proyectos**             | `src/data/projects.ts` | Campo `repo` listo en los 7 proyectos; solo se muestra si lo añades (hoy Tattoo Style ya lo usa). |
 | 22  | **Stack: tecnologías que falten**                          | `src/data/stack.ts`    | No se agregan sin tu confirmación.                                              |
 
 ### Cómo completar cada uno

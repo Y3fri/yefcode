@@ -350,4 +350,9 @@ export const projectCopyEn: Readonly<Record<ProjectSlug, ProjectCopy>> = {
     summary:
       "A web tool for practising English with in-browser speech recognition (Google Speech API) that evaluates pronunciation.",
   },
+  "tattoo-style": {
+    summary:
+      "A tattoo studio website: a filterable gallery with lightbox, appointment booking by time slot, and an admin panel behind a login to edit content, upload photos and manage bookings. Data lives as JSON in Firebase Storage and messages end up on WhatsApp.",
+    role: "Design, development and the admin panel",
+  },
 };

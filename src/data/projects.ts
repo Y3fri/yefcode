@@ -122,6 +122,24 @@ export const projects = [
     url: "https://y3frienglish.netlify.app",
     // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
+  {
+    slug: "tattoo-style",
+    title: "Tattoo Style",
+    year: 2026,
+    status: "live",
+    summary:
+      "Sitio para un estudio de tatuajes: galería filtrable con lightbox, reserva de citas por turnos y panel de administración con login para editar el contenido, subir fotos y gestionar reservas. Los datos viven en JSON dentro de Firebase Storage y los mensajes terminan en WhatsApp.",
+    role: "Diseño, desarrollo y panel de administración",
+    stack: ["React", "Vite", "Firebase"],
+    branch: "web",
+    image: {
+      kind: "video",
+      src: "/projects/tatto.mp4",
+      alt: "Video de demostración del sitio Tattoo Style.",
+    },
+    url: "https://tattoplantilla.netlify.app",
+    repo: "https://github.com/Y3fri/tatto-pantilla",
+  },
 ] as const satisfies readonly Project[];
 
 export type ProjectSlug = (typeof projects)[number]["slug"];
