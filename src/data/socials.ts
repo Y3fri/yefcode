@@ -1,37 +1,60 @@
 import type { Social } from "@/lib/types";
+import { profileFacts } from "@/data/profile";
 
 /**
- * Enlaces de contacto.
- * Los marcados con isPlaceholder: true NO se renderizan como enlace activo
- * hasta que completes el dato. El mailto usa el correo de abajo.
+ * Enlaces de contacto centralizados.
+ * Los textos visibles (etiquetas de cada canal) viven en src/data/i18n.
  */
 
-/** TODO(contacto): reemplaza con tu correo real. */
-export const email = "TODO@example.com";
+export const email = profileFacts.email;
+export const phoneDisplay = profileFacts.phoneDisplay;
+export const phoneHref = profileFacts.phoneHref;
+export const githubUrl = profileFacts.githubUrl;
+export const linkedinUrl = profileFacts.linkedinUrl;
 
-/** TODO(contacto): reemplaza con tu URL real de GitHub. */
-export const githubUrl = "https://github.com/TODO";
+/** Mensaje prellenado de WhatsApp, siempre en español. */
+const whatsappMessage = encodeURIComponent(
+  "Hola Yeferson, vi tu portafolio y me gustaría hablar contigo sobre un proyecto.",
+);
 
-/** TODO(contacto): reemplaza con tu URL real de LinkedIn. */
-export const linkedinUrl = "https://www.linkedin.com/in/TODO";
+export const whatsappUrl = `${profileFacts.whatsappUrl}?text=${whatsappMessage}`;
 
 export const socials: readonly Social[] = [
   {
     id: "email",
-    label: "Correo",
+    icon: "email",
+    value: email,
     href: `mailto:${email}`,
-    isPlaceholder: true,
+    external: false,
+    copyable: true,
   },
   {
-    id: "github",
-    label: "GitHub",
-    href: githubUrl,
-    isPlaceholder: true,
+    id: "whatsapp",
+    icon: "whatsapp",
+    value: phoneDisplay,
+    href: whatsappUrl,
+    external: true,
+    copyable: true,
   },
   {
     id: "linkedin",
-    label: "LinkedIn",
+    icon: "linkedin",
+    value: "yeferson-andrey-guzman-silva",
     href: linkedinUrl,
-    isPlaceholder: true,
+    external: true,
+    copyable: true,
+  },
+  {
+    id: "github",
+    icon: "github",
+    value: "Y3fri",
+    href: githubUrl,
+    external: true,
+    copyable: true,
   },
 ];
+
+/** Texto que copia el botón de copiar de cada tarjeta de contacto. */
+export function copyTargetFor(social: Social): string {
+  return social.id === "email" || social.id === "whatsapp" ? social.value : social.href;
+}

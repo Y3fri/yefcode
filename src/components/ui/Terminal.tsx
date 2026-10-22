@@ -2,12 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-
-type TerminalLine = {
-  prompt?: string;
-  text: string;
-  tone?: "default" | "ok" | "muted";
-};
+import type { TerminalLine } from "@/lib/types";
 
 type TerminalProps = {
   lines: readonly TerminalLine[];
@@ -18,7 +13,8 @@ type TerminalProps = {
 
 /**
  * Ventana de terminal que "tipea" sus líneas de arriba hacia abajo.
- * Respeta prefers-reduced-motion: imprime todo sin animación.
+ * Respeta prefers-reduced-motion y el atributo html[data-motion]:
+ * en modo "reduced" imprime todo sin animación.
  */
 export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) {
   const [typed, setTyped] = useState<readonly string[]>([]);
@@ -28,11 +24,14 @@ export function Terminal({ lines, typingSpeed = 42, className }: TerminalProps) 
   const reduceMotion = useMemo(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      (document.documentElement.dataset.motion === "reduced" ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches),
     [],
   );
 
   useEffect(() => {
+    // El componente se remonta con `key` cuando cambian idioma o animación,
+    // así que el estado de tipeo siempre parte limpio aquí.
     let charTimer: ReturnType<typeof setTimeout> | undefined;
     let lineTimer: ReturnType<typeof setTimeout> | undefined;
 

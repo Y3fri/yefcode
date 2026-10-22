@@ -2,106 +2,126 @@ import type { Project } from "@/lib/types";
 
 /**
  * Fu única de verdad de los proyectos.
- * Para agregar uno nuevo: añade un objeto aquí y su imagen en /public/projects.
+ * Para agregar uno nuevo: añade un objeto aquí, su imagen en /public/projects
+ * y, si quieres traducirlo, su entrada en src/data/i18n/en.ts (projectCopy).
+ * Regla: no se inventan datos; lo pendiente se marca TODO(yeferson).
  */
 
-export const projects: readonly Project[] = [
+export const projects = [
   {
-    id: "yedibox",
-    name: "YEDIBOX",
+    slug: "yedibox",
+    title: "YEDIBOX",
     year: 2025,
-    description:
-      "Sitio de tienda en línea con diseño web a medida, enfocado en una interfaz clara y una experiencia de compra fluida.",
+    status: "live",
+    summary:
+      "Tienda en línea con diseño propio y desarrollo de front-end a medida: navegación clara y una experiencia de compra pensada de principio a fin.",
+    // TODO(yeferson): confirma qué ofrece exactamente la tienda (catálogo, pagos, envíos)
+    // para precisar la descripción.
+    // TODO(yeferson): confirma el stack técnico real (¿React/Next.js?).
+    role: "Diseño UI/UX y desarrollo front-end",
     stack: ["Diseño web", "Front-End", "UI/UX"],
     branch: "web",
-    status: "live",
-    media: {
+    image: {
       kind: "image",
       src: "/projects/yedi1.png",
       alt: "Captura de la tienda en línea YEDIBOX mostrando su catálogo de productos.",
     },
-    link: { label: "yedibox.shop", href: "https://yedibox.shop" },
+    url: "https://yedibox.shop",
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
-    id: "sistema-pos",
-    name: "Sistema POS",
+    slug: "sistema-pos",
+    title: "Sistema POS",
     year: 2024,
-    description:
-      "Punto de venta de escritorio para gestión de ventas e inventario, construido con PyQt6 y respaldado en MySQL.",
-    stack: ["PyQt6", "MySQL", "UI/UX"],
-    branch: "api",
     status: "live",
-    media: {
+    summary:
+      "Aplicación de escritorio de punto de venta con interfaz propia y base de datos MySQL para la gestión de ventas e inventario.",
+    role: "Diseño de interfaz, desarrollo y modelado de datos",
+    stack: ["PyQt6", "MySQL"],
+    branch: "api",
+    image: {
       kind: "video",
       src: "/projects/tienda23.mp4",
       alt: "Video demostración del Sistema POS en funcionamiento.",
       poster: "/projects/yedi1.png",
     },
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
-    id: "reclaje-pwa",
-    name: "Reclaje PWA",
+    slug: "reclaje-pwa",
+    title: "Reclaje PWA",
     year: 2022,
-    description:
-      "Aplicación web progresiva con mapa de Google Maps y API propia, pensada para consultas georreferenciadas desde el celular.",
-    stack: ["React", "Python", "Google Maps", "API", "UI/UX"],
-    branch: "web",
     status: "live",
-    media: {
+    summary:
+      "Aplicación web progresiva con mapa interactivo de Google Maps y API propia, pensada para consultas desde el celular.",
+    // TODO(yeferson): confirma el objetivo real de la app (qué consulta el usuario y para qué).
+    role: "Frontend, API y UX",
+    stack: ["React", "Python", "Google Maps"],
+    branch: "web",
+    image: {
       kind: "image",
       src: "/projects/pwa.png",
       alt: "Captura de la PWA Reclaje mostrando un mapa de Google Maps en pantalla móvil.",
     },
+    // TODO(yeferson): añade `url` si hay una versión pública.
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
-    id: "deylax",
-    name: "DEYLAX",
+    slug: "deylax",
+    title: "DEYLAX",
     year: 2026,
-    description:
-      "Plataforma en desarrollo con backend en FastAPI, front-end en React y una escena interactiva en Three.js.",
+    status: "development",
+    summary:
+      "Plataforma web full stack en desarrollo con backend en FastAPI, front-end en React e interfaz 3D con Three.js.",
+    // TODO(yeferson): describe qué hace la plataforma (sector, usuario y función principal).
+    // TODO(yeferson): confirma tu rol concreto en este proyecto.
     stack: ["FastAPI", "React", "MySQL", "Three.js"],
     branch: "api",
-    status: "development",
-    media: {
+    image: {
       kind: "image",
       src: "/projects/deylax.png",
       alt: "Captura de la plataforma DEYLAX en desarrollo.",
     },
-    link: { label: "deylax.com", href: "https://deylax.com" },
+    url: "https://deylax.com",
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
-    id: "yedicont",
-    name: "YediCont",
+    slug: "yedicont",
+    title: "YediCont",
     year: 2026,
-    description:
-      "Herramienta contable en desarrollo con front-end en React y una API en Python, enfocada en simplicidad de uso.",
-    stack: ["React", "Python", "API", "UI/UX"],
-    branch: "web",
     status: "development",
-    media: {
+    summary:
+      "Aplicación web en desarrollo con API en Python y frontend en React, construida para crecer sobre una base de datos bien modelada.",
+    // TODO(yeferson): describe qué hace la aplicación (qué problema resuelve y para quién).
+    // TODO(yeferson): confirma tu rol concreto en este proyecto.
+    stack: ["React", "Python"],
+    branch: "web",
+    image: {
       kind: "image",
       src: "/projects/yedicont.png",
       alt: "Captura del front-end de YediCont en desarrollo.",
     },
-    link: {
-      label: "ver demo",
-      href: "https://yedicont-front-rkny.vercel.app",
-    },
+    url: "https://yedicont-front-rkny.vercel.app",
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
-    id: "free-learning-english",
-    name: "Free Learning English",
+    slug: "free-learning-english",
+    title: "Free Learning English",
     year: 2025,
-    description:
-      "Sitio de práctica de inglés que usa el reconocimiento de voz de Google para evaluar la pronunciación en el navegador.",
-    stack: ["Google Speech API", "HTML", "CSS", "JavaScript"],
-    branch: "web",
     status: "live",
-    media: {
+    summary:
+      "Herramienta web para practicar inglés con reconocimiento de voz en el navegador (Google Speech API) que evalúa la pronunciación.",
+    // TODO(yeferson): confirma tu rol concreto en este proyecto.
+    stack: ["HTML", "CSS", "JavaScript"],
+    branch: "web",
+    image: {
       kind: "image",
       src: "/projects/english.png",
       alt: "Captura del sitio Free Learning English con su ejercicio de pronunciación.",
     },
-    link: { label: "netlify.app", href: "https://y3frienglish.netlify.app" },
+    url: "https://y3frienglish.netlify.app",
+    // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
-];
+] as const satisfies readonly Project[];
+
+export type ProjectSlug = (typeof projects)[number]["slug"];

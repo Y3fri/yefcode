@@ -1,4 +1,5 @@
 import { GitLabel } from "@/components/ui/GitLabel";
+import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -38,7 +39,7 @@ export function SectionHeading({
       {description ? (
         <p className="mt-4 text-base leading-relaxed text-muted">{description}</p>
       ) : null}
-      <GitLabel text="HEAD → main" className="mt-4" />
+      <GitLabel text={`HEAD → ${profile.branch}`} className="mt-4" />
     </div>
   );
 }

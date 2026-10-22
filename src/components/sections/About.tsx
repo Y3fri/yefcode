@@ -1,68 +1,65 @@
+"use client";
+
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Chip } from "@/components/ui/Chip";
+import { useSettings } from "@/components/providers/SettingsProvider";
 import { profile } from "@/data/profile";
 
-const highlights = [
-  { label: "Full Stack", detail: "web + APIs" },
-  { label: "Soporte técnico", detail: "resolución de problemas reales" },
-  { label: "Supervisión", detail: "trabajo en equipo y procesos" },
-  { label: "Producción", detail: "las cosas deben funcionar" },
-];
-
 /**
- * Sección "Sobre mí".
- * El texto biográfico es un TODO explícito hasta que se complete en src/data/profile.ts.
+ * Sección "Sobre mí": dos párrafos sobrios, cierre con ubicación
+ * y disponibilidad, y tres datos rápidos en tarjetas.
+ * El texto vive en src/data/i18n; los datos en src/data/profile.ts.
  */
 export function About() {
+  const { t } = useSettings();
+
+  const facts = [
+    { label: t.about.facts.locationLabel, value: profile.locationShort },
+    { label: t.about.facts.focusLabel, value: t.about.facts.focusValue },
+    {
+      label: t.about.facts.availabilityLabel,
+      value: t.about.facts.availabilityValue,
+    },
+  ];
+
   return (
     <section id="sobre-mi" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <SectionHeading
-          command="git log --oneline --about"
-          title="Sobre mí"
-          description={`Un vistazo rápido a cómo trabajo y qué me mueve.`}
+          command={t.about.command}
+          title={t.about.title}
+          description={t.about.description}
         />
 
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div className="space-y-5">
-            {profile.about.map((paragraph, i) => (
+            {t.about.paragraphs.map((paragraph, i) => (
               <p key={i} className="text-base leading-relaxed text-muted">
                 {paragraph}
               </p>
             ))}
 
-            <p className="inline-flex items-center gap-2 rounded-lg border border-warn/30 bg-warn/10 px-3 py-2 font-mono text-xs text-warn">
-              <span aria-hidden="true">⚠</span>
-              TODO: completa tu texto real en src/data/profile.ts
+            <p className="rounded-xl border border-border bg-surface px-4 py-3 font-mono text-xs leading-relaxed text-muted">
+              {t.about.closing}
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-surface p-6">
-            <h3 className="mb-5 font-mono text-sm text-muted">
-              <span className="text-ok">$</span> cat highlights.json
+          <div>
+            <h3 className="mb-4 font-mono text-sm text-muted">
+              <span className="text-ok">$</span> {t.about.factsCommand}
             </h3>
             <ul className="space-y-4">
-              {highlights.map((h) => (
-                <li key={h.label} className="flex flex-col gap-1.5">
-                  <span className="text-sm font-medium text-foreground">{h.label}</span>
-                  <Chip className="self-start">{h.detail}</Chip>
+              {facts.map((fact) => (
+                <li
+                  key={fact.label}
+                  className="rounded-2xl border border-border bg-surface p-5 transition-colors hover:border-accent-indigo/50"
+                >
+                  <p className="font-mono text-xs text-faint">{fact.label}</p>
+                  <p className="mt-1.5 text-sm font-medium text-foreground">
+                    {fact.value}
+                  </p>
                 </li>
               ))}
             </ul>
-
-            {/* TODO(foto): coloca tu imagen y quita el aviso */}
-            <div className="mt-6 flex items-center gap-3 rounded-lg border border-dashed border-border-strong bg-background-soft/50 p-3">
-              <span
-                aria-hidden="true"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-2 font-mono text-sm text-faint"
-              >
-                ?
-              </span>
-              <p className="font-mono text-xs leading-relaxed text-faint">
-                TODO(foto): agrega tu retrato en{" "}
-                <code className="text-warn">public/projects/photo.jpg</code>
-              </p>
-            </div>
           </div>
         </div>
       </div>

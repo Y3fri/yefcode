@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
+import { SettingsPanel } from "@/components/ui/SettingsPanel";
+import { useSettings } from "@/components/providers/SettingsProvider";
 import { navigation, profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -9,8 +11,10 @@ import { cn } from "@/lib/utils";
  * Navbar fija con blur.
  * El menú móvil es accesible: botón con aria-expanded/aria-controls,
  * cierre con Escape, y bloqueo del scroll del body al abrir.
+ * Incluye el botón de configuración (tema, idioma, acento y animaciones).
  */
 export function Navbar() {
+  const { t } = useSettings();
   const [open, setOpen] = useState(false);
   const menuId = useId();
 
@@ -35,8 +39,8 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-lg">
       <nav
-        aria-label="Navegación principal"
-        className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8"
+        aria-label={t.nav.ariaLabel}
+        className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:px-8"
       >
         <Link
           href="#inicio"
@@ -55,7 +59,7 @@ export function Navbar() {
                 href={item.href}
                 className="rounded-md px-3 py-2 font-mono text-sm text-muted transition-colors hover:bg-surface-2/60 hover:text-foreground"
               >
-                {item.label}
+                {t.nav.labels[item.labelKey]}
               </a>
             </li>
           ))}
@@ -68,38 +72,42 @@ export function Navbar() {
           </li>
         </ul>
 
-        {/* Botón hamburguesa (solo móvil) */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls={menuId}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-2/60 text-foreground transition-colors hover:border-accent-indigo/50 md:hidden"
-        >
-          <span className="sr-only">{open ? "Cerrar menú" : "Abrir menú"}</span>
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
+        <div className="flex items-center gap-2">
+          <SettingsPanel />
+
+          {/* Botón hamburguesa (solo móvil) */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls={menuId}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-2/60 text-foreground transition-colors hover:border-accent-indigo/50 md:hidden"
           >
-            {open ? (
-              <>
-                <path d="M6 6l12 12" />
-                <path d="M18 6L6 18" />
-              </>
-            ) : (
-              <>
-                <path d="M4 7h16" />
-                <path d="M4 12h16" />
-                <path d="M4 17h16" />
-              </>
-            )}
-          </svg>
-        </button>
+            <span className="sr-only">{open ? t.nav.closeMenu : t.nav.openMenu}</span>
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              {open ? (
+                <>
+                  <path d="M6 6l12 12" />
+                  <path d="M18 6L6 18" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 7h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 17h16" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Panel móvil */}
@@ -116,7 +124,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="block py-3.5 font-mono text-base text-muted transition-colors hover:text-foreground"
               >
-                {item.label}
+                {t.nav.labels[item.labelKey]}
               </a>
             </li>
           ))}
