@@ -26,7 +26,7 @@ export const projects = [
       src: "/projects/yedi1.png",
       alt: "Captura de la tienda en línea YEDIBOX mostrando su catálogo de productos.",
     },
-    url: "https://yedibox.shop",
+    url: "https://yedibox.com",
     // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
