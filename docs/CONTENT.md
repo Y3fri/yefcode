@@ -74,7 +74,7 @@ Datos por confirmar (de la versión anterior, siguen abiertos):
 | 18  | **YediCont: qué hace la aplicación**                       | `src/data/projects.ts` | Describe qué problema resuelve y para quién.                                    |
 | 19  | **YediCont: rol concreto**                                 | `src/data/projects.ts` | Igual que DEYLAX.                                                               |
 | 20  | **Free Learning English: rol concreto**                    | `src/data/projects.ts` | Igual que DEYLAX.                                                               |
-| 21  | **Enlace al código (GitHub) de los proyectos**             | `src/data/projects.ts` | Campo `repo` listo en los 7 proyectos; solo se muestra si lo añades (hoy Tattoo Style ya lo usa). |
+| 21  | **Enlace al código (GitHub) de los proyectos**             | `src/data/projects.ts` | Campo `repo` listo en los 9 proyectos; solo se muestra si lo añades (hoy AURA ya lo usa). |
 | 22  | **Stack: tecnologías que falten**                          | `src/data/stack.ts`    | No se agregan sin tu confirmación.                                              |
 
 ### Cómo completar cada uno
@@ -157,14 +157,17 @@ demos usan contenido ficticio genérico y se etiquetan "Demo".
 
 Fuente: `src/data/projects.ts`. Se ordenan por año descendente.
 
-| Proyecto              | Año  | Estado        | Rama | Enlace                                 |
-| --------------------- | ---- | ------------- | ---- | -------------------------------------- |
-| YEDIBOX               | 2025 | en producción | web  | https://yedibox.shop                   |
-| Sistema POS           | 2024 | en producción | api  | demo en video (sin enlace)             |
-| Reclaje PWA           | 2022 | en producción | web  | sin enlace (pendiente)                 |
-| DEYLAX                | 2026 | en desarrollo | api  | https://deylax.com                     |
-| YediCont              | 2026 | en desarrollo | web  | https://yedicont-front-rkny.vercel.app |
-| Free Learning English | 2025 | en producción | web  | https://y3frienglish.netlify.app       |
+| Proyecto                | Año  | Estado        | Rama | Enlace                                  |
+| ----------------------- | ---- | ------------- | ---- | --------------------------------------- |
+| YEDIBOX                 | 2025 | en producción | web  | https://yedibox.com                     |
+| Sistema POS             | 2024 | en producción | api  | demo en video (sin enlace)              |
+| Reclaje PWA             | 2022 | en desarrollo | web  | sin enlace (pendiente)                  |
+| DEYLAX                  | 2026 | en desarrollo | api  | https://deylax.com                      |
+| YediCont                | 2026 | en desarrollo | web  | https://yedicont.netlify.app            |
+| Free Learning English   | 2025 | en producción | web  | https://y3frienglish.netlify.app        |
+| Tattoo Style            | 2026 | en producción | web  | https://tattoplantilla.netlify.app      |
+| Invitación de San Valentín | 2026 | en producción | web | https://para-ticonamor.netlify.app    |
+| AURA                    | 2026 | en producción | web  | código: https://github.com/Y3fri/AURA   |
 
 ### Medios
 
@@ -176,6 +179,9 @@ Fuente: `src/data/projects.ts`. Se ordenan por año descendente.
 | `projects/deylax.png`   | DEYLAX                       | imagen                     |
 | `projects/yedicont.png` | YediCont                     | imagen                     |
 | `projects/english.png`  | Free Learning English        | imagen                     |
+| `projects/tatto.mp4`    | Tattoo Style                 | video                      |
+| `projects/sanvalentin.png` | Invitación de San Valentín | imagen                   |
+| `projects/aura.mp4`     | AURA                         | video                      |
 | `projects/photo.jpg`    | retrato personal             | imagen (sin usar todavía)  |
 | `templates/*.svg`       | vistas previas de plantillas | imagen (mockups genéricos) |
 

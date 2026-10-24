@@ -47,19 +47,19 @@ export const es = {
   },
 
   hero: {
-    badge: "Disponible para nuevos proyectos",
-    title: "Tu página web, sin complicaciones.",
+    badge: "Cupos abiertos para este mes",
+    title: "Tu idea, en línea y funcionando.",
     subtitle:
-      "Hojas de vida online, páginas para negocios y detalles digitales personalizados. Hechos a mano, con código limpio y a un precio justo.",
-    primaryCta: "Ver plantillas",
+      "Creo páginas web para personas y negocios: desde una hoja de vida o una invitación, hasta sistemas con citas, productos y base de datos. Código limpio, entrega rápida y precio claro.",
+    primaryCta: "Ver paquetes",
     secondaryCta: "Escríbeme por WhatsApp",
     terminal: [
-      { prompt: "$", text: "ayudo" },
-      { text: "→ personas, negocios, ideas", tone: "muted" as const },
-      { prompt: "$", text: "entrega" },
-      { text: "→ página lista y en línea", tone: "muted" as const },
-      { prompt: "$", text: "estado" },
-      { text: "→ recibiendo proyectos", tone: "ok" as const },
+      { prompt: "$", text: "hablamos --por-whatsapp" },
+      { text: "→ me cuentas qué necesitas", tone: "muted" as const },
+      { prompt: "$", text: "construyo --a-tu-medida" },
+      { text: "→ ves avances antes de pagar todo", tone: "muted" as const },
+      { prompt: "$", text: "publico --en-linea" },
+      { text: "→ tu página lista y funcionando", tone: "ok" as const },
     ],
   },
 

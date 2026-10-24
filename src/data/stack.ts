@@ -19,8 +19,8 @@ export const stackGroups: readonly StackGroup[] = [
       "Tailwind CSS",
     ],
   },
-  { id: "backend", items: ["Python", "FastAPI"] },
-  { id: "data", items: ["MySQL"] },
+  { id: "backend", items: ["Python", "FastAPI", "C#", "ASP.NET"] },
+  { id: "data", items: ["MySQL", "PostgreSQL", "SQL Server", "Firebase"] },
   {
     id: "others",
     items: ["PyQt6", "Three.js", "PWA", "Google Maps API", "Git", "GitHub"],

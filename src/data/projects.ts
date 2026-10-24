@@ -51,7 +51,7 @@ export const projects = [
     slug: "reclaje-pwa",
     title: "Reclaje PWA",
     year: 2022,
-    status: "live",
+    status: "development",
     summary:
       "Aplicación web progresiva con mapa interactivo de Google Maps y API propia, pensada para consultas desde el celular.",
     // TODO(yeferson): confirma el objetivo real de la app (qué consulta el usuario y para qué).
@@ -101,7 +101,7 @@ export const projects = [
       src: "/projects/yedicont.png",
       alt: "Captura del front-end de YediCont en desarrollo.",
     },
-    url: "https://yedicont-front-rkny.vercel.app",
+    url: "https://yedicont.netlify.app",
     // TODO(yeferson): añade `repo` solo si quieres publicar el enlace al código.
   },
   {
@@ -138,7 +138,43 @@ export const projects = [
       alt: "Video de demostración del sitio Tattoo Style.",
     },
     url: "https://tattoplantilla.netlify.app",
-    repo: "https://github.com/Y3fri/tatto-pantilla",
+    // Sin repo: por ahora no hay código público de esta plantilla.
+  },
+  {
+    slug: "invitacion-san-valentin",
+    title: "Invitación de San Valentín",
+    year: 2026,
+    status: "live",
+    summary:
+      "Invitación animada para compartir por link: un corazón 3D de más de 13.000 partículas que late al ritmo de un latido real, con cuenta regresiva en vivo, panel para personalizarlo en vivo y confirmación de asistencia por WhatsApp, sin servidor ni base de datos.",
+    role: "Diseño, shaders y desarrollo front-end",
+    stack: ["Three.js", "GLSL", "Vite"],
+    branch: "web",
+    image: {
+      kind: "image",
+      src: "/projects/sanvalentin.png",
+      alt: "Captura de la invitación de San Valentín: un corazón hecho de partículas rosas con la cuenta regresiva del evento.",
+    },
+    url: "https://para-ticonamor.netlify.app",
+    // Sin repo: el enlace público es el sitio desplegado, no hay código abierto.
+  },
+  {
+    slug: "aura",
+    title: "AURA",
+    year: 2026,
+    status: "development",
+    summary:
+      "Instrumento musical en 3D hecho de partículas: la cámara detecta tus manos en el navegador y tocas notas levantando los dedos, concentras la nube con un pellizco y la explotas abriendo la mano. Toda la física corre en shaders GLSL y el vídeo nunca sale del dispositivo.",
+    role: "Proyecto personal: diseño, desarrollo, shaders y audio",
+    stack: ["Three.js", "GLSL", "MediaPipe", "Tone.js", "GSAP", "Vite"],
+    branch: "web",
+    image: {
+      kind: "video",
+      src: "/projects/aura.mp4",
+      alt: "Video de AURA: una nube de partículas doradas sigue a las manos del usuario y reacciona a los gestos.",
+    },
+    // TODO(yeferson): añade `url` si despliegas una demo pública.
+    repo: "https://github.com/Y3fri/AURA",
   },
 ] as const satisfies readonly Project[];
 

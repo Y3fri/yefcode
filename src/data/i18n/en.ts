@@ -48,19 +48,19 @@ export const en: Dictionary = {
   },
 
   hero: {
-    badge: "Available for new projects",
-    title: "Your website, without complications.",
+    badge: "Spots open this month",
+    title: "Your idea, online and working.",
     subtitle:
-      "Online resumes, pages for businesses and custom digital details. Built by hand, with clean code and at a fair price.",
-    primaryCta: "View templates",
+      "I build websites for people and businesses: from a resume or an invitation to full systems with appointments, products and a database. Clean code, fast delivery and clear pricing.",
+    primaryCta: "See packages",
     secondaryCta: "Message me on WhatsApp",
     terminal: [
-      { prompt: "$", text: "help" },
-      { text: "→ people, businesses, ideas", tone: "muted" as const },
-      { prompt: "$", text: "deliver" },
-      { text: "→ a live site, ready to share", tone: "muted" as const },
-      { prompt: "$", text: "status" },
-      { text: "→ taking new projects", tone: "ok" as const },
+      { prompt: "$", text: "we-talk --on-whatsapp" },
+      { text: "→ you tell me what you need", tone: "muted" as const },
+      { prompt: "$", text: "i-build --to-fit" },
+      { text: "→ you see progress before paying in full", tone: "muted" as const },
+      { prompt: "$", text: "i-publish --live" },
+      { text: "→ your site, up and running", tone: "ok" as const },
     ],
   },
 
@@ -354,5 +354,15 @@ export const projectCopyEn: Readonly<Record<ProjectSlug, ProjectCopy>> = {
     summary:
       "A tattoo studio website: a filterable gallery with lightbox, appointment booking by time slot, and an admin panel behind a login to edit content, upload photos and manage bookings. Data lives as JSON in Firebase Storage and messages end up on WhatsApp.",
     role: "Design, development and the admin panel",
+  },
+  "invitacion-san-valentin": {
+    summary:
+      "An animated invitation to share by link: a 3D heart made of more than 13,000 particles beating to a real heartbeat, with a live countdown, a live customization panel and RSVP confirmation over WhatsApp, with no server or database.",
+    role: "Design, shaders and front-end development",
+  },
+  aura: {
+    summary:
+      "A 3D musical instrument made of particles: the camera tracks your hands in the browser and you play notes by raising your fingers, pinch to condense the cloud and open your hand to explode it. All the physics runs in GLSL shaders and the video never leaves your device.",
+    role: "Personal project: design, development, shaders and audio",
   },
 };
